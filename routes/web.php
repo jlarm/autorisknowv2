@@ -13,9 +13,11 @@ use Laravel\Fortify\Features;
 
 Route::get('/', fn (): Factory|View => view('welcome'))->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function (): void {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+
+    Route::view('posts', 'post.index')->name('posts.index');
+});
 
 Route::middleware(['auth'])->group(function (): void {
     Route::redirect('settings', 'settings/profile');
