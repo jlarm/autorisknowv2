@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->string('featured_image')->nullable();
             $table->string('status')->default('draft');
             $table->string('visibility')->default('public');
-            $table->dateTime('published_at');
+            $table->date('published_at');
             $table->string('external_link')->nullable();
             $table->timestamps();
         });

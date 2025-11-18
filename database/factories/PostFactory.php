@@ -20,7 +20,14 @@ final class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->unique()->sentence(),
+            'slug' => fake()->unique()->slug(),
+            'content' => fake()->paragraphs(3, true),
+            'featured_image' => fake()->imageUrl(640, 480, 'posts'),
+            'status' => fake()->randomElement(['published', 'draft']),
+            'visibility' => fake()->randomElement(['public', 'private']),
+            'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
+            'external_link' => fake()->optional(0.3)->url(),
         ];
     }
 }

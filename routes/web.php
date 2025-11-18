@@ -17,6 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 
     Route::view('posts', 'post.index')->name('posts.index');
+    Route::view('posts/create', 'post.create')->name('posts.create');
+    Route::livewire('posts/{post}/edit', 'pages::post.edit')->name('posts.edit');
 });
 
 Route::middleware(['auth'])->group(function (): void {

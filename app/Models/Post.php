@@ -42,7 +42,7 @@ final class Post extends Model
             'featured_image' => 'string',
             'status' => Status::class,
             'visibility' => Visibility::class,
-            'published_at' => 'datetime',
+            'published_at' => 'date',
             'external_link' => 'string',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
