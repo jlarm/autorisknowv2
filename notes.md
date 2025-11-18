@@ -12,4 +12,3 @@
 - - Slug
 - - Meta Description
 - - Keyphrases
-- - 
