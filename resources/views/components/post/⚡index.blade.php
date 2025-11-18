@@ -43,12 +43,12 @@ new class extends Component {
             @foreach($this->posts as $post)
                 <flux:table.row>
                     <flux:table.cell class="w-3/5">
-                        <div class="flex items-center gap-2">
-                            {{ Str::limit($post->title, 50) }}
+                        <a wire:navigate href="{{ route('posts.edit', $post) }}" class="flex items-center gap-2">
+                            <span class="hover:underline">{{ Str::limit($post->title, 50) }}</span>
                             @if($post->external_link)
                                 <flux:badge size="sm" color="blue" inset="top bottom">External Link</flux:badge>
                             @endif
-                        </div>
+                        </a>
                     </flux:table.cell>
                     <flux:table.cell class="w-1/5">{{ $post->published_at->format('M d, Y') }}</flux:table.cell>
                     <flux:table.cell class="w-1/5" align="end">
