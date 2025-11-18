@@ -13,7 +13,7 @@ use Livewire\Form;
 
 final class PostForm extends Form
 {
-    public ?Post $post;
+    public ?Post $post = null;
 
     #[Validate('required|string|min:3|max:255')]
     public string $title = '';
@@ -25,7 +25,7 @@ final class PostForm extends Form
     public string $content = '';
 
     #[Validate('nullable|image|max:10240')]
-    public $featuredImage = null;
+    public $featuredImage;
 
     #[Validate('nullable|url')]
     public string $externalLink = '';
@@ -42,15 +42,13 @@ final class PostForm extends Form
      */
     public function rules(): array
     {
-        $rules = [
+        return [
             'status' => ['required', new Enum(Status::class)],
             'visibility' => ['required', new Enum(Visibility::class)],
         ];
-
-        return $rules;
     }
 
-    public function setPost(Post $post)
+    public function setPost(Post $post): void
     {
         $this->post = $post;
 
@@ -75,7 +73,7 @@ final class PostForm extends Form
             $featuredImagePath = $this->featuredImage->store('posts', 'public');
         }
 
-        Post::create([
+        Post::query()->create([
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
@@ -101,7 +99,7 @@ final class PostForm extends Form
             'published_at' => $this->publishedAt,
         ];
 
-        if ($this->featuredImage && !is_string($this->featuredImage)) {
+        if ($this->featuredImage && ! is_string($this->featuredImage)) {
             $data['featured_image'] = $this->featuredImage->store('posts', 'public');
         }
 
