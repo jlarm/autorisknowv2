@@ -6,10 +6,24 @@ namespace App\Models;
 
 use App\Enums\Status;
 use App\Enums\Visibility;
+use Carbon\CarbonImmutable;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property-read int $id
+ * @property-read string $title
+ * @property-read string $slug
+ * @property-read string $content
+ * @property-read string $featured_image
+ * @property-read Status $status
+ * @property-read Visibility $visibility
+ * @property-read CarbonImmutable $published_at
+ * @property-read string|null $external_link
+ * @property-read CarbonImmutable $created_at
+ * @property-read CarbonImmutable $updated_at
+ */
 final class Post extends Model
 {
     /** @use HasFactory<PostFactory> */
