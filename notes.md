@@ -1,0 +1,15 @@
+### News Post
+- Title
+- Slug
+- Content
+- Featured Image
+- Status
+- Visibility
+- Published On
+- Link to external site (checkbox and url field)
+- SEO
+- - Title
+- - Slug
+- - Meta Description
+- - Keyphrases
+- - 
