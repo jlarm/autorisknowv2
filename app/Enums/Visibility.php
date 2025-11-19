@@ -16,4 +16,12 @@ enum Visibility: string
             self::PRIVATE => 'Private',
         };
     }
+
+    public function color(): string
+    {
+        return match ($this) {
+            self::PUBLIC => 'green',
+            self::PRIVATE => 'red',
+        };
+    }
 }

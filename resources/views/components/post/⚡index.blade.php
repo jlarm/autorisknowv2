@@ -36,6 +36,8 @@ new class extends Component {
         <flux:table.columns>
             <flux:table.column class="w-3/5" sortable :sorted="$sortBy === 'title'" :direction="$sortDirection" wire:click="sort('title')">Title</flux:table.column>
             <flux:table.column class="w-1/5" sortable :sorted="$sortBy === 'published_at'" :direction="$sortDirection" wire:click="sort('published_at')">Published</flux:table.column>
+            <flux:table.column class="w-1/5">Status</flux:table.column>
+            <flux:table.column class="w-1/5">Visibility</flux:table.column>
             <flux:table.column class="w-1/5"></flux:table.column>
         </flux:table.columns>
 
@@ -51,6 +53,12 @@ new class extends Component {
                         </a>
                     </flux:table.cell>
                     <flux:table.cell class="w-1/5">{{ $post->published_at->format('M d, Y') }}</flux:table.cell>
+                    <flux:table.cell class="w-1/5">
+                        <flux:badge size="sm" :color="$post->status->color()" inset="top bottom">{{ $post->status->label() }}</flux:badge>
+                    </flux:table.cell>
+                    <flux:table.cell class="w-1/5">
+                        <flux:badge size="sm" :color="$post->visibility->color()" inset="top bottom">{{ $post->visibility->label() }}</flux:badge>
+                    </flux:table.cell>
                     <flux:table.cell class="w-1/5" align="end">
                         <flux:button wire:navigate :href="route('posts.edit', $post)" size="sm">Edit</flux:button>
                     </flux:table.cell>

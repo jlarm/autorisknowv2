@@ -16,4 +16,12 @@ enum Status: string
             self::Draft => 'Draft',
         };
     }
+
+    public function color(): string
+    {
+        return match ($this) {
+            self::Published => 'green',
+            self::Draft => 'yellow',
+        };
+    }
 }
