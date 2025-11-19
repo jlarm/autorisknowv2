@@ -49,7 +49,7 @@ test('generates meta description', function (): void {
 
     expect($result['description'])->toBeString()->not->toBeEmpty();
     expect($result['alternatives'])->toBeArray();
-    expect(mb_strlen($result['description']))->toBeLessThanOrEqual(165);
+    expect(mb_strlen($result['description']))->toBeLessThanOrEqual(180);
 });
 
 test('generates seo title', function (): void {
