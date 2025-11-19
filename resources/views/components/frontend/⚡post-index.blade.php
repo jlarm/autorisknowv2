@@ -17,7 +17,7 @@ new class extends Component
             return Post::query()
                 ->where('status', Status::Published)
                 ->where('visibility', Visibility::PUBLIC)
-                ->select(['id', 'title', 'slug', 'featured_image'])
+                ->select(['id', 'title', 'slug', 'featured_image', 'external_link'])
                 ->latest()
                 ->get();
         });
@@ -28,11 +28,19 @@ new class extends Component
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     @foreach($this->posts() as $post)
         <article class="border border-zinc-200 p-4 rounded-lg">
-            <a wire:navigate.hover href="{{ route('post.show', $post) }}">
-                <img src="{{ $post->featured_image ?: asset('backup.png') }}" alt="{{ $post->title }}"
-                     class="w-full h-48 object-cover mb-4 rounded-lg">
-                <h2>{{ $post->title }}</h2>
-            </a>
+            @if($post->external_link)
+                <a href="{{ $post->external_link }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ $post->featured_image ?: asset('backup.png') }}" alt="{{ $post->title }}"
+                         class="w-full h-48 object-cover mb-4 rounded-lg">
+                    <h2>{{ $post->title }}</h2>
+                </a>
+            @else
+                <a wire:navigate.hover href="{{ route('post.show', $post) }}">
+                    <img src="{{ $post->featured_image ?: asset('backup.png') }}" alt="{{ $post->title }}"
+                         class="w-full h-48 object-cover mb-4 rounded-lg">
+                    <h2>{{ $post->title }}</h2>
+                </a>
+            @endif
         </article>
     @endforeach
 </div>
