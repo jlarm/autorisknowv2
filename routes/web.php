@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 Route::get('/', fn (): Factory|View => view('welcome'))->name('front');
+Route::get('videos', fn (): Factory|View => view('frontend.videos'))->name('videos');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('home', 'dashboard')->name('home');

@@ -40,4 +40,21 @@ final class Video extends Model
     {
         return $this->morphOne(Seo::class, 'seoable');
     }
+
+    public function getStyledEmbedCodeAttribute(): string
+    {
+        $embedCode = $this->embed_code;
+
+        // Add aspect-video class to iframe
+        if (str_contains($embedCode, '<iframe')) {
+            $embedCode = str_replace('<iframe', '<iframe class="aspect-video w-full h-full rounded-lg"', $embedCode);
+        }
+
+        // Add aspect-video class to video element
+        if (str_contains($embedCode, '<video')) {
+            $embedCode = str_replace('<video', '<video class="aspect-video w-full h-full rounded-lg"', $embedCode);
+        }
+
+        return $embedCode;
+    }
 }
