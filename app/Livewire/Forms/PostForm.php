@@ -22,13 +22,13 @@ final class PostForm extends Form
     public string $slug = '';
 
     #[Validate('nullable|string')]
-    public string $content = '';
+    public ?string $content = '';
 
     #[Validate('nullable|image|max:10240')]
     public $featuredImage;
 
     #[Validate('nullable|url')]
-    public string $externalLink = '';
+    public ?string $externalLink = '';
 
     public Status $status = Status::Draft;
 

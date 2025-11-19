@@ -11,14 +11,18 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-Route::get('/', fn (): Factory|View => view('welcome'))->name('home');
+Route::get('/', fn (): Factory|View => view('welcome'))->name('front');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::view('home', 'dashboard')->name('home');
 
-    Route::view('posts', 'post.index')->name('posts.index');
-    Route::view('posts/create', 'post.create')->name('posts.create');
-    Route::livewire('posts/{post}/edit', 'pages::post.edit')->name('posts.edit');
+    Route::prefix('dashboard')->group(function (): void {
+        Route::view('posts', 'post.index')->name('posts.index');
+        Route::view('posts/create', 'post.create')->name('posts.create');
+        Route::livewire('posts/{post}/edit', 'pages::post.edit')->name('posts.edit');
+
+        Route::livewire('videos', 'pages::video.index')->name('videos.index');
+    });
 });
 
 Route::middleware(['auth'])->group(function (): void {

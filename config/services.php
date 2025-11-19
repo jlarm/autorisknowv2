@@ -41,4 +41,9 @@ return [
         'api_key' => env('ANTHROPIC_API_KEY'),
     ],
 
+    'twitter' => [
+        'site' => env('TWITTER_SITE'),
+        'creator' => env('TWITTER_CREATOR'),
+    ],
+
 ];

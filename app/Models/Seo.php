@@ -14,6 +14,19 @@ final class Seo extends Model
     /** @use HasFactory<SeoFactory> */
     use HasFactory;
 
+    /**
+     * Get the Twitter Card type with a sensible default
+     */
+    public function getTwitterCardTypeAttribute(): string
+    {
+        return $this->twitter_card ?? 'summary_large_image';
+    }
+
+    public function seoable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
     protected function casts(): array
     {
         return [
@@ -21,10 +34,5 @@ final class Seo extends Model
             'no_index' => 'boolean',
             'no_follow' => 'boolean',
         ];
-    }
-
-    public function seoable(): MorphTo
-    {
-        return $this->morphTo();
     }
 }

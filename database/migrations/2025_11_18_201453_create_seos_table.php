@@ -22,6 +22,12 @@ return new class extends Migration
             $table->string('og_title')->nullable();
             $table->text('og_description')->nullable();
             $table->string('og_image')->nullable();
+            $table->string('twitter_card')->nullable();
+            $table->string('twitter_title')->nullable();
+            $table->text('twitter_description')->nullable();
+            $table->string('twitter_image')->nullable();
+            $table->string('twitter_site')->nullable();
+            $table->string('twitter_creator')->nullable();
             $table->string('canonical_url')->nullable();
             $table->boolean('no_index')->default(false);
             $table->boolean('no_follow')->default(false);

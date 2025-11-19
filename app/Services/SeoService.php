@@ -102,6 +102,54 @@ PROMPT;
     }
 
     /**
+     * Generate Twitter Card metadata
+     *
+     * @param  array{title: string, content: string, image?: string}  $data
+     * @return array{card: string, title: string, description: string, titleAlternatives: array<int, string>, descriptionAlternatives: array<int, string>}
+     */
+    public function generateTwitterCard(array $data): array
+    {
+        $image = $data['image'] ?? 'no image provided';
+
+        $prompt = <<<PROMPT
+You are a social media expert. Generate optimized Twitter Card metadata for this content.
+
+Title: {$data['title']}
+Content: {$data['content']}
+Image: {$image}
+
+Requirements:
+- card: Choose the best Twitter Card type ('summary' for text-focused content, 'summary_large_image' for visual content)
+- title: 70 characters maximum (Twitter truncates longer titles)
+- description: 200 characters maximum (compelling and informative)
+- Make it engaging and encourage clicks
+- Focus on the most compelling aspect of the content
+- No quotation marks around text
+
+Respond with JSON in this exact format:
+{
+  "card": "summary_large_image",
+  "title": "The optimized Twitter title",
+  "description": "The optimized Twitter description",
+  "titleAlternatives": ["Alternative title 1", "Alternative title 2"],
+  "descriptionAlternatives": ["Alternative description 1", "Alternative description 2"]
+}
+PROMPT;
+
+        $response = $this->client->messages->create(
+            model: 'claude-sonnet-4-20250514',
+            maxTokens: 1024,
+            messages: [
+                MessageParam::with(role: 'user', content: $prompt),
+            ]
+        );
+
+        $content = $response->content[0]->text;
+
+        return $this->parseJsonResponse($content);
+    }
+
+    /**
      * Analyze content for SEO best practices
      *
      * @param  array{title: string, content: string, metaTitle?: string, metaDescription?: string}  $data
