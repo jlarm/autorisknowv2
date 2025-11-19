@@ -8,7 +8,7 @@ use Anthropic\Client;
 use Anthropic\Messages\MessageParam;
 use RuntimeException;
 
-final class SeoService
+final readonly class SeoService
 {
     private Client $client;
 
@@ -48,11 +48,11 @@ Respond with JSON in this exact format:
 PROMPT;
 
         $response = $this->client->messages->create(
-            model: 'claude-sonnet-4-20250514',
             maxTokens: 1024,
             messages: [
-                MessageParam::with(role: 'user', content: $prompt),
-            ]
+                MessageParam::with(content: $prompt, role: 'user'),
+            ],
+            model: 'claude-sonnet-4-20250514'
         );
 
         $content = $response->content[0]->text;
@@ -89,11 +89,11 @@ Respond with JSON in this exact format:
 PROMPT;
 
         $response = $this->client->messages->create(
-            model: 'claude-sonnet-4-20250514',
             maxTokens: 1024,
             messages: [
-                MessageParam::with(role: 'user', content: $prompt),
-            ]
+                MessageParam::with(content: $prompt, role: 'user'),
+            ],
+            model: 'claude-sonnet-4-20250514'
         );
 
         $content = $response->content[0]->text;
@@ -137,11 +137,11 @@ Respond with JSON in this exact format:
 PROMPT;
 
         $response = $this->client->messages->create(
-            model: 'claude-sonnet-4-20250514',
             maxTokens: 1024,
             messages: [
-                MessageParam::with(role: 'user', content: $prompt),
-            ]
+                MessageParam::with(content: $prompt, role: 'user'),
+            ],
+            model: 'claude-sonnet-4-20250514'
         );
 
         $content = $response->content[0]->text;
@@ -189,11 +189,11 @@ The score should be 0-100 where 100 is perfect SEO.
 PROMPT;
 
         $response = $this->client->messages->create(
-            model: 'claude-sonnet-4-20250514',
             maxTokens: 2048,
             messages: [
-                MessageParam::with(role: 'user', content: $prompt),
-            ]
+                MessageParam::with(content: $prompt, role: 'user'),
+            ],
+            model: 'claude-sonnet-4-20250514'
         );
 
         $content = $response->content[0]->text;
@@ -212,10 +212,10 @@ PROMPT;
 
         if (str_starts_with($content, '```json')) {
             $content = preg_replace('/^```json\s*/', '', $content);
-            $content = preg_replace('/\s*```$/', '', $content);
+            $content = preg_replace('/\s*```$/', '', (string) $content);
         } elseif (str_starts_with($content, '```')) {
             $content = preg_replace('/^```\s*/', '', $content);
-            $content = preg_replace('/\s*```$/', '', $content);
+            $content = preg_replace('/\s*```$/', '', (string) $content);
         }
 
         $decoded = json_decode(mb_trim($content), true);

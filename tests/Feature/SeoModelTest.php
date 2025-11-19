@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-test('can create seo with twitter card fields', function () {
+test('can create seo with twitter card fields', function (): void {
     $post = Post::factory()->create();
 
     $seo = Seo::factory()->create([
@@ -30,7 +30,7 @@ test('can create seo with twitter card fields', function () {
     expect($seo->twitter_creator)->toBe('@johndoe');
 });
 
-test('seo belongs to seoable model', function () {
+test('seo belongs to seoable model', function (): void {
     $post = Post::factory()->create();
     $seo = Seo::factory()->create([
         'seoable_type' => Post::class,
@@ -41,7 +41,7 @@ test('seo belongs to seoable model', function () {
     expect($seo->seoable->id)->toBe($post->id);
 });
 
-test('twitter card type accessor returns default value', function () {
+test('twitter card type accessor returns default value', function (): void {
     $seo = Seo::factory()->create([
         'seoable_type' => Post::class,
         'seoable_id' => Post::factory()->create()->id,
@@ -51,7 +51,7 @@ test('twitter card type accessor returns default value', function () {
     expect($seo->twitterCardType)->toBe('summary_large_image');
 });
 
-test('twitter card type accessor returns actual value when set', function () {
+test('twitter card type accessor returns actual value when set', function (): void {
     $seo = Seo::factory()->create([
         'seoable_type' => Post::class,
         'seoable_id' => Post::factory()->create()->id,
@@ -61,7 +61,7 @@ test('twitter card type accessor returns actual value when set', function () {
     expect($seo->twitterCardType)->toBe('summary');
 });
 
-test('keywords are cast to array', function () {
+test('keywords are cast to array', function (): void {
     $post = Post::factory()->create();
     $seo = Seo::factory()->create([
         'seoable_type' => Post::class,
@@ -73,7 +73,7 @@ test('keywords are cast to array', function () {
     expect($seo->keywords)->toContain('laravel', 'seo', 'twitter');
 });
 
-test('no_index and no_follow are cast to boolean', function () {
+test('no_index and no_follow are cast to boolean', function (): void {
     $post = Post::factory()->create();
     $seo = Seo::factory()->create([
         'seoable_type' => Post::class,

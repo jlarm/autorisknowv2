@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use App\Services\SeoService;
 
-beforeEach(function () {
+beforeEach(function (): void {
     if (! config('services.anthropic.api_key')) {
         $this->markTestSkipped('Anthropic API key not configured');
     }
 });
 
-test('generates twitter card metadata', function () {
+test('generates twitter card metadata', function (): void {
     $service = new SeoService();
 
     $result = $service->generateTwitterCard([
@@ -35,7 +35,7 @@ test('generates twitter card metadata', function () {
     expect(mb_strlen($result['description']))->toBeLessThanOrEqual(200);
 });
 
-test('generates meta description', function () {
+test('generates meta description', function (): void {
     $service = new SeoService();
 
     $result = $service->generateMetaDescription([
@@ -52,7 +52,7 @@ test('generates meta description', function () {
     expect(mb_strlen($result['description']))->toBeLessThanOrEqual(165);
 });
 
-test('generates seo title', function () {
+test('generates seo title', function (): void {
     $service = new SeoService();
 
     $result = $service->generateSeoTitle([
@@ -69,7 +69,7 @@ test('generates seo title', function () {
     expect(mb_strlen($result['title']))->toBeLessThanOrEqual(60);
 });
 
-test('analyzes content for seo', function () {
+test('analyzes content for seo', function (): void {
     $service = new SeoService();
 
     $result = $service->analyzeContent([
