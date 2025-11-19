@@ -41,7 +41,7 @@ final class Video extends Model
         return $this->morphOne(Seo::class, 'seoable');
     }
 
-    public function getStyledEmbedCodeAttribute(): string
+    protected function getStyledEmbedCodeAttribute(): string
     {
         $embedCode = $this->embed_code;
 
@@ -52,7 +52,7 @@ final class Video extends Model
 
         // Add aspect-video class to video element
         if (str_contains($embedCode, '<video')) {
-            $embedCode = str_replace('<video', '<video class="aspect-video w-full h-full rounded-lg"', $embedCode);
+            return str_replace('<video', '<video class="aspect-video w-full h-full rounded-lg"', $embedCode);
         }
 
         return $embedCode;
