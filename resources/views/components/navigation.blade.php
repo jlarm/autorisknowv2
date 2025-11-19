@@ -20,7 +20,7 @@
             <a href="#" class="text-sm/6 font-semibold text-gray-900">F&I</a>
             <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
             <a wire:navigate href="{{ route('videos') }}" class="text-sm/6 font-semibold text-gray-900">Videos</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">News</a>
+            <a wire:navigate href="{{ route('news') }}" class="text-sm/6 font-semibold text-gray-900">News</a>
         </div>
     </nav>
     <el-dialog>
@@ -48,8 +48,8 @@
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Packages</a>
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">F&I</a>
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Contact</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videos</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">News</a>
+                                <a wire:navigate href="{{ route('videos') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videos</a>
+                                <a wire:navigate href="{{ route('news') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">News</a>
                             </div>
                             <div class="py-6">
                                 <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>

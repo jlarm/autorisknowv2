@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\PostController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -13,6 +14,8 @@ use Laravel\Fortify\Features;
 
 Route::get('/', fn (): Factory|View => view('welcome'))->name('front');
 Route::get('videos', fn (): Factory|View => view('frontend.videos'))->name('videos');
+Route::get('news', fn (): Factory|View => view('frontend.posts'))->name('news');
+Route::get('news/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('home', 'dashboard')->name('home');

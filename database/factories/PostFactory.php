@@ -23,7 +23,7 @@ final class PostFactory extends Factory
             'title' => fake()->unique()->sentence(),
             'slug' => fake()->unique()->slug(),
             'content' => fake()->paragraphs(3, true),
-            'featured_image' => fake()->imageUrl(640, 480, 'posts'),
+            'featured_image' => 'https://picsum.photos/640/480',
             'status' => fake()->randomElement(['published', 'draft']),
             'visibility' => fake()->randomElement(['public', 'private']),
             'published_at' => fake()->dateTimeBetween('-1 year', 'now'),
