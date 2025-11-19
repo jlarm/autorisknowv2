@@ -1,8 +1,8 @@
 <header class="bg-white">
     <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <a wire:navigate href="{{ route('front') }}" class="-m-1.5 p-1.5">
-            <span class="sr-only">Your Company</span>
-            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
+            <span class="sr-only">Automotive Risk Management Partners</span>
+            <img src="{{ asset('logo.svg') }}" alt="ARMP" class="h-8 w-auto" />
         </a>
         <div class="flex lg:hidden">
             <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
