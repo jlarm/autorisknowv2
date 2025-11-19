@@ -1,11 +1,13 @@
 <?php
 
-use App\Models\Post;
+use Illuminate\Database\Eloquent\Model;
 use App\Services\SeoService;
 use Livewire\Component;
 
 new class extends Component {
-    public Post $post;
+    public Model $model;
+
+    public ?string $contentField = 'content';
 
     public string $metaTitle = '';
 
@@ -41,14 +43,27 @@ new class extends Component {
 
     public function mount(): void
     {
-        if ($this->post->seo) {
-            $this->metaTitle = $this->post->seo->meta_title ?? '';
-            $this->metaDescription = $this->post->seo->meta_description ?? '';
-            $this->keywords = $this->post->seo->keywords ?? [];
-            $this->twitterCard = $this->post->seo->twitter_card ?? 'summary_large_image';
-            $this->twitterTitle = $this->post->seo->twitter_title ?? '';
-            $this->twitterDescription = $this->post->seo->twitter_description ?? '';
+        if ($this->model->seo) {
+            $this->metaTitle = $this->model->seo->meta_title ?? '';
+            $this->metaDescription = $this->model->seo->meta_description ?? '';
+            $this->keywords = $this->model->seo->keywords ?? [];
+            $this->twitterCard = $this->model->seo->twitter_card ?? 'summary_large_image';
+            $this->twitterTitle = $this->model->seo->twitter_title ?? '';
+            $this->twitterDescription = $this->model->seo->twitter_description ?? '';
         }
+    }
+
+    protected function getModelContent(): string
+    {
+        if ($this->contentField === null) {
+            return '';
+        }
+
+        if (! property_exists($this->model, $this->contentField) && ! method_exists($this->model, '__get')) {
+            return '';
+        }
+
+        return $this->model->{$this->contentField} ?? '';
     }
 
     public function generateMetaDescription(SeoService $seoService): void
@@ -63,8 +78,8 @@ new class extends Component {
 
         try {
             $result = $seoService->generateMetaDescription([
-                'title' => $this->post->title,
-                'content' => $this->post->content,
+                'title' => $this->model->title,
+                'content' => $this->getModelContent(),
             ]);
 
             $this->metaDescription = $result['description'];
@@ -88,8 +103,8 @@ new class extends Component {
 
         try {
             $result = $seoService->generateSeoTitle([
-                'title' => $this->post->title,
-                'content' => $this->post->content,
+                'title' => $this->model->title,
+                'content' => $this->getModelContent(),
             ]);
 
             $this->metaTitle = $result['title'];
@@ -113,8 +128,8 @@ new class extends Component {
 
         try {
             $result = $seoService->generateTwitterCard([
-                'title' => $this->post->title,
-                'content' => $this->post->content,
+                'title' => $this->model->title,
+                'content' => $this->getModelContent(),
             ]);
 
             $this->twitterCard = $result['card'];
@@ -141,8 +156,8 @@ new class extends Component {
 
         try {
             $this->seoAnalysis = $seoService->analyzeContent([
-                'title' => $this->post->title,
-                'content' => $this->post->content,
+                'title' => $this->model->title,
+                'content' => $this->getModelContent(),
                 'metaTitle' => $this->metaTitle,
                 'metaDescription' => $this->metaDescription,
             ]);
@@ -202,8 +217,8 @@ new class extends Component {
 
     public function save(): void
     {
-        $this->post->seo()->updateOrCreate(
-            ['seoable_id' => $this->post->id, 'seoable_type' => Post::class],
+        $this->model->seo()->updateOrCreate(
+            ['seoable_id' => $this->model->id, 'seoable_type' => get_class($this->model)],
             [
                 'meta_title' => $this->metaTitle,
                 'meta_description' => $this->metaDescription,
@@ -283,6 +298,7 @@ new class extends Component {
             <flux:field>
                 <div class="flex items-center justify-between">
                     <flux:label>Meta Description</flux:label>
+                    @if($contentField)
                     <x-ai-button
                         wire:click="generateMetaDescription"
                         wire:loading.attr="disabled"
@@ -291,6 +307,7 @@ new class extends Component {
                     >
                         Generate Meta Description
                     </x-ai-button>
+                    @endif
                 </div>
                 <flux:textarea wire:model.blur="metaDescription" placeholder="Enter meta description (150-160 characters)" rows="3" />
                 <flux:error name="metaDescription" />

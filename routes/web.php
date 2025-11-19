@@ -22,6 +22,8 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::livewire('posts/{post}/edit', 'pages::post.edit')->name('posts.edit');
 
         Route::livewire('videos', 'pages::video.index')->name('videos.index');
+        Route::livewire('videos/create', 'pages::video.create')->name('videos.create');
+        Route::livewire('videos/{video}/edit', 'pages::video.edit')->name('videos.edit');
     });
 });
 

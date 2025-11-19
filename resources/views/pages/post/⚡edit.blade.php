@@ -37,7 +37,7 @@ new class extends Component {
 };
 ?>
 
-<div>
+<div class="relative p-3 flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
     <form wire:submit="update" class="grid grid-cols-3 gap-6">
         <div class="col-span-2 space-y-6">
             <flux:field>
@@ -62,7 +62,7 @@ new class extends Component {
             </flux:card>
 
             <flux:card>
-                <livewire:post.seo-form :post="$form->post"/>
+                <livewire:seo-form :model="$form->post"/>
             </flux:card>
         </div>
 
