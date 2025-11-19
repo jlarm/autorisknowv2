@@ -12,19 +12,19 @@ new class extends Component {
 
     public PostForm $form;
 
-    public function mount(Post $post)
+    public function mount(Post $post): void
     {
         $this->form->setPost($post);
     }
 
-    public function update()
+    public function update(): void
     {
         $this->form->update();
 
         $this->redirect(route('posts.index'));
     }
 
-    public function removeFeaturedImage()
+    public function removeFeaturedImage(): void
     {
         $this->form->featuredImage = null;
     }
@@ -60,9 +60,13 @@ new class extends Component {
                     <flux:input wire:model="form.externalLink" type="url" placeholder="https://example.com"/>
                 </flux:field>
             </flux:card>
+
+            <flux:card>
+                <livewire:post.seo-form :post="$form->post"/>
+            </flux:card>
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-1 space-y-6">
             <flux:card class="space-y-6">
                 <flux:field>
                     <flux:select wire:model="form.status" placeholder="Status..." label="Status">
@@ -116,6 +120,10 @@ new class extends Component {
                     @endif
                 </flux:field>
                 <flux:button type="submit" variant="primary" class="w-full">Update</flux:button>
+            </flux:card>
+
+            <flux:card>
+                <flux:heading size="lg">Search Appearance</flux:heading>
             </flux:card>
         </div>
     </form>
