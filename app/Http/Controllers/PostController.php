@@ -12,6 +12,8 @@ final class PostController extends Controller
 {
     public function show(Post $post): Factory|View
     {
+        $post->load('seo');
+
         return view('frontend.post.show', [
             'post' => $post,
         ]);

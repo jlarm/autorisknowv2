@@ -1,4 +1,18 @@
-<x-layouts.frontend title="News">
+<x-layouts.frontend
+    :title="$post->seo?->meta_title ?? $post->title"
+    :description="$post->seo?->meta_description"
+    :keywords="$post->seo?->keywords"
+    :og-title="$post->seo?->og_title ?? $post->title"
+    :og-description="$post->seo?->og_description ?? $post->seo?->meta_description"
+    :og-image="$post->seo?->og_image ?? $post->featured_image"
+    :twitter-card="$post->seo?->twitter_card_type ?? 'summary_large_image'"
+    :twitter-title="$post->seo?->twitter_title ?? $post->seo?->og_title ?? $post->title"
+    :twitter-description="$post->seo?->twitter_description ?? $post->seo?->meta_description"
+    :twitter-image="$post->seo?->twitter_image ?? $post->seo?->og_image ?? $post->featured_image"
+    :canonical-url="$post->seo?->canonical_url"
+    :no-index="$post->seo?->no_index ?? false"
+    :no-follow="$post->seo?->no_follow ?? false"
+>
     <div class="container mx-auto px-6 relative">
         <div class="mb-8">
             <a
