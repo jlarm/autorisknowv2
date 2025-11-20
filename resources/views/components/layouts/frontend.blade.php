@@ -123,6 +123,8 @@
         <div class="relative z-10 pt-24 pb-12 min-h-screen flex flex-col">
             {{ $slot }}
         </div>
+
+        <x-frontend.footer />
     </div>
 @fluxScripts
 </body>
