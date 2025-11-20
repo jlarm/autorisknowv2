@@ -1,63 +1,100 @@
-<header class="bg-white">
-    <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+<header
+    x-data="{
+          isScrolled: window.scrollY > 50,
+          mobileMenuOpen: false,
+          ready: false
+      }"
+    x-init="
+          window.addEventListener('scroll', () => { isScrolled = window.scrollY > 50 });
+          $nextTick(() => { ready = true });
+      "
+    :class="[
+          isScrolled || mobileMenuOpen
+              ? 'bg-[#020617]/80 backdrop-blur-xl border-white/5 py-3'
+              : 'bg-transparent border-transparent py-6',
+          ready ? 'transition-all duration-500' : ''
+      ]"
+    class="fixed top-0 left-0 w-full z-40 border-b"
+>
+    <div class="container mx-auto px-6 flex items-center justify-between">
         <a wire:navigate href="{{ route('front') }}" class="-m-1.5 p-1.5">
             <span class="sr-only">Automotive Risk Management Partners</span>
-            <img src="{{ asset('logo.svg') }}" alt="ARMP" class="h-8 w-auto" />
+            <img src="{{ asset('logo-white.svg') }}" alt="ARMP" class="h-8 w-auto" />
         </a>
-        <div class="flex lg:hidden">
-            <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                <span class="sr-only">Open main menu</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                    <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
-        </div>
-        <div class="hidden lg:flex lg:gap-x-12">
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">About</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Solutions</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Security</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Packages</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">F&I</a>
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>
-            <a wire:navigate href="{{ route('videos') }}" class="text-sm/6 font-semibold text-gray-900">Videos</a>
-            <a wire:navigate href="{{ route('news') }}" class="text-sm/6 font-semibold text-gray-900">News</a>
-        </div>
-    </nav>
-    <el-dialog>
-        <dialog id="mobile-menu" class="m-0 p-0 backdrop:bg-transparent lg:hidden">
-            <div tabindex="0" class="fixed inset-0 focus:outline focus:outline-0">
-                <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                    <div class="flex items-center justify-between">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
-                            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
-                        </a>
-                        <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-700">
-                            <span class="sr-only">Close menu</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="mt-6 flow-root">
-                        <div class="-my-6 divide-y divide-gray-500/10">
-                            <div class="space-y-2 py-6">
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">About</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Solutions</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Security</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Packages</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">F&I</a>
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Contact</a>
-                                <a wire:navigate href="{{ route('videos') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videos</a>
-                                <a wire:navigate href="{{ route('news') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">News</a>
-                            </div>
-                            <div class="py-6">
-                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>
-                            </div>
-                        </div>
-                    </div>
-                </el-dialog-panel>
-            </div>
-        </dialog>
-    </el-dialog>
+
+        <nav class="hidden lg:flex items-center gap-8">
+            <a wire:navigate href="{{ route('front') }}" class="{{ request()->routeIs('front') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Home</a>
+            <a href="#" class="text-slate-400 text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">About</a>
+            <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Solutions</a>
+            <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Security</a>
+            <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Packages</a>
+            <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">F&I</a>
+            <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Contact</a>
+            <a wire:navigate href="{{ route('videos') }}" class="{{ request()->routeIs('videos') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Videos</a>
+            <a wire:navigate href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">News</a>
+        </nav>
+    </div>
 </header>
+{{--<header class="bg-white">--}}
+{{--    <nav aria-label="Global" class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">--}}
+{{--        <a wire:navigate href="{{ route('front') }}" class="-m-1.5 p-1.5">--}}
+{{--            <span class="sr-only">Automotive Risk Management Partners</span>--}}
+{{--            <img src="{{ asset('logo.svg') }}" alt="ARMP" class="h-8 w-auto" />--}}
+{{--        </a>--}}
+{{--        <div class="flex lg:hidden">--}}
+{{--            <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">--}}
+{{--                <span class="sr-only">Open main menu</span>--}}
+{{--                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">--}}
+{{--                    <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />--}}
+{{--                </svg>--}}
+{{--            </button>--}}
+{{--        </div>--}}
+{{--        <div class="hidden lg:flex lg:gap-x-12">--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">About</a>--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">Solutions</a>--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">Security</a>--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">Packages</a>--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">F&I</a>--}}
+{{--            <a href="#" class="text-sm/6 font-semibold text-gray-900">Contact</a>--}}
+{{--            <a wire:navigate href="{{ route('videos') }}" class="text-sm/6 font-semibold text-gray-900">Videos</a>--}}
+{{--            <a wire:navigate href="{{ route('news') }}" class="text-sm/6 font-semibold text-gray-900">News</a>--}}
+{{--        </div>--}}
+{{--    </nav>--}}
+{{--    <el-dialog>--}}
+{{--        <dialog id="mobile-menu" class="m-0 p-0 backdrop:bg-transparent lg:hidden">--}}
+{{--            <div tabindex="0" class="fixed inset-0 focus:outline focus:outline-0">--}}
+{{--                <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">--}}
+{{--                    <div class="flex items-center justify-between">--}}
+{{--                        <a href="#" class="-m-1.5 p-1.5">--}}
+{{--                            <span class="sr-only">Your Company</span>--}}
+{{--                            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />--}}
+{{--                        </a>--}}
+{{--                        <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-700">--}}
+{{--                            <span class="sr-only">Close menu</span>--}}
+{{--                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">--}}
+{{--                                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />--}}
+{{--                            </svg>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                    <div class="mt-6 flow-root">--}}
+{{--                        <div class="-my-6 divide-y divide-gray-500/10">--}}
+{{--                            <div class="space-y-2 py-6">--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">About</a>--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Solutions</a>--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Security</a>--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Packages</a>--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">F&I</a>--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Contact</a>--}}
+{{--                                <a wire:navigate href="{{ route('videos') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Videos</a>--}}
+{{--                                <a wire:navigate href="{{ route('news') }}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">News</a>--}}
+{{--                            </div>--}}
+{{--                            <div class="py-6">--}}
+{{--                                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log in</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </el-dialog-panel>--}}
+{{--            </div>--}}
+{{--        </dialog>--}}
+{{--    </el-dialog>--}}
+{{--</header>--}}

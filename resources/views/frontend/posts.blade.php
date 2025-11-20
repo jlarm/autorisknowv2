@@ -1,9 +1,8 @@
 <x-layouts.frontend title="News">
-    <x-frontend.text-banner>
-        <x-slot:title>Explore our latest articles <span class="block text-zinc-400">about tech industries</span></x-slot:title>
-        Explore our latest articles, whitepapers, and thought leadership content, unlocking valuable insights and best practices to fortify your digital assets.
-    </x-frontend.text-banner>
-    <div class="max-w-7xl mx-auto mt-32">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto mb-16 text-center"><h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Industry News</h1>
+            <p class="text-xl text-slate-400">Stay informed on the latest regulations and standards affecting the automotive industry</p>
+        </div>
         <livewire:frontend.post-index lazy />
     </div>
 </x-layouts.frontend>
