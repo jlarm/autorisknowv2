@@ -22,10 +22,10 @@ new class extends Component {
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     @foreach($this->videos() as $video)
-        <article class="bg-[#0f172a]/40 border border-white/10 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg hover:shadow-cyan-900/20 transition-all backdrop-blur-sm">
+        <article class="bg-white border border-slate-200 rounded-xl overflow-hidden group shadow-sm hover:shadow-lg hover:shadow-slate-200 transition-all">
             {!! $video->styled_embed_code !!}
             <div class="p-4">
-                <h3 class="text-white font-medium">{{ $video->title }}</h3>
+                <h3 class="text-slate-900 font-medium mb-1">{{ $video->title }}</h3>
             </div>
         </article>
     @endforeach

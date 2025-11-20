@@ -12,7 +12,7 @@
     <header
         :class="[
           isScrolled || mobileMenuOpen
-              ? 'bg-[#020617]/80 backdrop-blur-xl border-white/5 py-3'
+              ? 'bg-white/80 backdrop-blur-xl border-slate-200 py-3 shadow-sm'
               : 'bg-transparent border-transparent py-6',
           ready ? 'transition-all duration-500' : ''
       ]"
@@ -25,15 +25,15 @@
             </a>
 
             <nav class="hidden lg:flex items-center gap-8">
-                <a wire:navigate href="{{ route('front') }}" class="{{ request()->routeIs('front') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Home</a>
-                <a href="#" class="text-slate-400 text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">About</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Solutions</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Security</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Packages</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">F&I</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Contact</a>
-                <a wire:navigate href="{{ route('videos') }}" class="{{ request()->routeIs('videos') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Videos</a>
-                <a wire:navigate href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">News</a>
+                <a wire:navigate href="{{ route('front') }}" class="{{ request()->routeIs('front') ? 'text-[#036482] font-semibold' : 'text-slate-500' }} text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Home</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">About</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Solutions</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Security</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Packages</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">F&I</a>
+                <a href="#" class="text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Contact</a>
+                <a wire:navigate href="{{ route('videos') }}" class="{{ request()->routeIs('videos') ? 'text-[#036482] font-semibold' : 'text-slate-500' }} text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">Videos</a>
+                <a wire:navigate href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-[#036482] font-semibold' : 'text-slate-500' }} text-sm font-medium hover:text-[#036482] transition-all duration-300 relative group px-1 py-1">News</a>
             </nav>
 
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-slate-300 hover:text-white transition-colors">
