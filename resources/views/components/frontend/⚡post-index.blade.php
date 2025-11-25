@@ -29,7 +29,7 @@ new class extends Component
     @foreach($this->posts as $post)
         <article class="glass-panel p-6 rounded-xl group cursor-pointer hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-cyan-900/20 border-white/10 bg-[#0f172a]/40 h-full">
             <a
-                href="{{ $post->external_link ?: route('post.show', $post) }}"
+                href="{{ $post->external_link ?: route('news.show', $post) }}"
                 @if($post->external_link)
                     target="_blank"
                     rel="noopener noreferrer"

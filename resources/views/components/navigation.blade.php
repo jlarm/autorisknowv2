@@ -25,15 +25,15 @@
             </a>
 
             <nav class="hidden lg:flex items-center gap-8">
-                <a wire:navigate href="{{ route('front') }}" class="{{ request()->routeIs('front') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Home</a>
-                <a href="#" class="text-slate-400 text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">About</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Solutions</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Security</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Packages</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">F&I</a>
-                <a href="#" class="text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Contact</a>
-                <a wire:navigate href="{{ route('videos') }}" class="{{ request()->routeIs('videos') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">Videos</a>
-                <a wire:navigate href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-white' : 'text-slate-400' }} text-sm font-medium hover:text-white transition-all duration-300 relative group px-1 py-1 ">News</a>
+                <a wire:navigate href="{{ route('front') }}" class="{{ request()->routeIs('front') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Home</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">About</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Solutions</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Security</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Packages</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">F&I</a>
+                <a href="#" class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Contact</a>
+                <a wire:navigate href="{{ route('videos') }}" class="{{ request()->routeIs('videos') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Videos</a>
+                <a wire:navigate href="{{ route('news.index') }}" class="{{ request()->routeIs('news.*') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">News</a>
             </nav>
 
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-slate-300 hover:text-white transition-colors">
@@ -53,7 +53,7 @@
                 Videos
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
-            <a wire:navigate href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+            <a wire:navigate href="{{ route('news.index') }}" class="{{ request()->routeIs('news') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 News
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </a>
