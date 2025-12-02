@@ -60,7 +60,8 @@
         ],
         "lint": [
             "rector",
-            "pint --parallel"
+            "pint --parallel",
+            "npm run lint"
         ],
         "test": [
             "@php artisan config:clear --ansi",

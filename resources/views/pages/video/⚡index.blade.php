@@ -7,17 +7,12 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-new #[Title('Videos')]
-class extends Component {
-
+new #[Title('Videos')] class extends Component {
     #[Computed]
     public function videos()
     {
-        return Video::query()
-            ->latest()
-            ->get();
+        return Video::query()->latest()->get();
     }
-
 };
 ?>
 
@@ -28,7 +23,7 @@ class extends Component {
         </flux:button>
     </div>
 
-    <flux:separator variant="subtle" class="my-4"/>
+    <flux:separator variant="subtle" class="my-4" />
 
     <flux:table class="w-full">
         <flux:table.columns>
@@ -41,7 +36,8 @@ class extends Component {
                 <flux:table.row>
                     <flux:table.cell>{{ $video->title }}</flux:table.cell>
                     <flux:table.cell align="end">
-                        <flux:button wire:navigate href="{{ route('videos.edit', $video) }}" size="sm">Edit</flux:button>
+                        <flux:button wire:navigate href="{{ route('videos.edit', $video) }}" size="sm">Edit
+                        </flux:button>
                     </flux:table.cell>
                 </flux:table.row>
             @endforeach

@@ -59,7 +59,7 @@ new class extends Component {
             return '';
         }
 
-        if (! property_exists($this->model, $this->contentField) && ! method_exists($this->model, '__get')) {
+        if (!property_exists($this->model, $this->contentField) && !method_exists($this->model, '__get')) {
             return '';
         }
 
@@ -68,7 +68,7 @@ new class extends Component {
 
     public function generateMetaDescription(SeoService $seoService): void
     {
-        if (! config('services.anthropic.api_key')) {
+        if (!config('services.anthropic.api_key')) {
             $this->addError('metaDescription', 'Anthropic API key not configured. Please add ANTHROPIC_API_KEY to your .env file.');
 
             return;
@@ -85,7 +85,7 @@ new class extends Component {
             $this->metaDescription = $result['description'];
             $this->descriptionSuggestions = $result['alternatives'];
         } catch (\Exception $e) {
-            $this->addError('metaDescription', 'Failed to generate meta description: '.$e->getMessage());
+            $this->addError('metaDescription', 'Failed to generate meta description: ' . $e->getMessage());
         } finally {
             $this->isGeneratingDescription = false;
         }
@@ -93,7 +93,7 @@ new class extends Component {
 
     public function generateSeoTitle(SeoService $seoService): void
     {
-        if (! config('services.anthropic.api_key')) {
+        if (!config('services.anthropic.api_key')) {
             $this->addError('metaTitle', 'Anthropic API key not configured. Please add ANTHROPIC_API_KEY to your .env file.');
 
             return;
@@ -110,7 +110,7 @@ new class extends Component {
             $this->metaTitle = $result['title'];
             $this->titleSuggestions = $result['alternatives'];
         } catch (\Exception $e) {
-            $this->addError('metaTitle', 'Failed to generate SEO title: '.$e->getMessage());
+            $this->addError('metaTitle', 'Failed to generate SEO title: ' . $e->getMessage());
         } finally {
             $this->isGeneratingTitle = false;
         }
@@ -118,7 +118,7 @@ new class extends Component {
 
     public function generateTwitterCard(SeoService $seoService): void
     {
-        if (! config('services.anthropic.api_key')) {
+        if (!config('services.anthropic.api_key')) {
             $this->addError('twitterCard', 'Anthropic API key not configured. Please add ANTHROPIC_API_KEY to your .env file.');
 
             return;
@@ -138,7 +138,7 @@ new class extends Component {
             $this->twitterTitleSuggestions = $result['titleAlternatives'] ?? [];
             $this->twitterDescriptionSuggestions = $result['descriptionAlternatives'] ?? [];
         } catch (\Exception $e) {
-            $this->addError('twitterCard', 'Failed to generate Twitter Card: '.$e->getMessage());
+            $this->addError('twitterCard', 'Failed to generate Twitter Card: ' . $e->getMessage());
         } finally {
             $this->isGeneratingTwitterCard = false;
         }
@@ -146,7 +146,7 @@ new class extends Component {
 
     public function analyzeSeo(SeoService $seoService): void
     {
-        if (! config('services.anthropic.api_key')) {
+        if (!config('services.anthropic.api_key')) {
             $this->addError('seoAnalysis', 'Anthropic API key not configured. Please add ANTHROPIC_API_KEY to your .env file.');
 
             return;
@@ -162,7 +162,7 @@ new class extends Component {
                 'metaDescription' => $this->metaDescription,
             ]);
         } catch (\Exception $e) {
-            $this->addError('seoAnalysis', 'Failed to analyze SEO: '.$e->getMessage());
+            $this->addError('seoAnalysis', 'Failed to analyze SEO: ' . $e->getMessage());
         } finally {
             $this->isAnalyzing = false;
         }
@@ -196,7 +196,7 @@ new class extends Component {
     {
         $keyword = trim($keyword);
 
-        if ($keyword !== '' && ! in_array($keyword, $this->keywords)) {
+        if ($keyword !== '' && !in_array($keyword, $this->keywords)) {
             $this->keywords[] = $keyword;
         }
     }
@@ -226,7 +226,7 @@ new class extends Component {
                 'twitter_card' => $this->twitterCard,
                 'twitter_title' => $this->twitterTitle,
                 'twitter_description' => $this->twitterDescription,
-            ]
+            ],
         );
 
         Flux::toast(variant: 'success', text: 'SEO updated successfully');
@@ -263,19 +263,17 @@ new class extends Component {
             <flux:field>
                 <div class="flex items-center justify-between">
                     <flux:label>SEO Title</flux:label>
-                    <x-ai-button
-                        wire:click="generateSeoTitle"
-                        wire:loading.attr="disabled"
-                        wire:target="generateSeoTitle"
-                        loadingText="Generating..."
-                    >
+                    <x-ai-button wire:click="generateSeoTitle" wire:loading.attr="disabled"
+                        wire:target="generateSeoTitle" loadingText="Generating...">
                         Generate SEO Title
                     </x-ai-button>
                 </div>
-                <flux:input wire:model.blur="metaTitle" type="text" placeholder="Enter SEO title (50-60 characters)" />
+                <flux:input wire:model.blur="metaTitle" type="text"
+                    placeholder="Enter SEO title (50-60 characters)" />
                 <flux:error name="metaTitle" />
                 @if ($metaTitle)
-                    <flux:text size="sm" class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                    <flux:text size="sm"
+                        class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                         {{ strlen($metaTitle) }} characters
                     </flux:text>
                 @endif
@@ -285,11 +283,10 @@ new class extends Component {
                 <div class="space-y-2">
                     <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
                     @foreach ($titleSuggestions as $suggestion)
-                        <div
-                            wire:click="useTitleSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20"
-                        >
-                            <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                        <div wire:click="useTitleSuggestion('{{ addslashes($suggestion) }}')"
+                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                            <flux:text size="sm">{{ $suggestion }} <span
+                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
                         </div>
                     @endforeach
                 </div>
@@ -298,21 +295,19 @@ new class extends Component {
             <flux:field>
                 <div class="flex items-center justify-between">
                     <flux:label>Meta Description</flux:label>
-                    @if($contentField)
-                    <x-ai-button
-                        wire:click="generateMetaDescription"
-                        wire:loading.attr="disabled"
-                        wire:target="generateMetaDescription"
-                        loadingText="Generating..."
-                    >
-                        Generate Meta Description
-                    </x-ai-button>
+                    @if ($contentField)
+                        <x-ai-button wire:click="generateMetaDescription" wire:loading.attr="disabled"
+                            wire:target="generateMetaDescription" loadingText="Generating...">
+                            Generate Meta Description
+                        </x-ai-button>
                     @endif
                 </div>
-                <flux:textarea wire:model.blur="metaDescription" placeholder="Enter meta description (150-160 characters)" rows="3" />
+                <flux:textarea wire:model.blur="metaDescription"
+                    placeholder="Enter meta description (150-160 characters)" rows="3" />
                 <flux:error name="metaDescription" />
                 @if ($metaDescription)
-                    <flux:text size="sm" class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                    <flux:text size="sm"
+                        class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                         {{ strlen($metaDescription) }} characters
                     </flux:text>
                 @endif
@@ -322,11 +317,10 @@ new class extends Component {
                 <div class="space-y-2">
                     <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
                     @foreach ($descriptionSuggestions as $suggestion)
-                        <div
-                            wire:click="useDescriptionSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20"
-                        >
-                            <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                        <div wire:click="useDescriptionSuggestion('{{ addslashes($suggestion) }}')"
+                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                            <flux:text size="sm">{{ $suggestion }} <span
+                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
                         </div>
                     @endforeach
                 </div>
@@ -334,21 +328,13 @@ new class extends Component {
 
             <flux:field>
                 <flux:label>Keywords</flux:label>
-                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Add keywords relevant to your content. Type your own or click suggested keywords below.</flux:text>
+                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Add keywords relevant to your
+                    content. Type your own or click suggested keywords below.</flux:text>
 
                 <div class="flex gap-2 mt-2">
-                    <flux:input
-                        wire:model="newKeyword"
-                        wire:keydown.enter.prevent="addNewKeyword"
-                        type="text"
-                        placeholder="Type a keyword and press Enter"
-                        class="flex-1"
-                    />
-                    <flux:button
-                        type="button"
-                        wire:click="addNewKeyword"
-                        variant="primary"
-                    >
+                    <flux:input wire:model="newKeyword" wire:keydown.enter.prevent="addNewKeyword" type="text"
+                        placeholder="Type a keyword and press Enter" class="flex-1" />
+                    <flux:button type="button" wire:click="addNewKeyword" variant="primary">
                         Add
                     </flux:button>
                 </div>
@@ -358,18 +344,16 @@ new class extends Component {
                         @foreach ($keywords as $index => $keyword)
                             <flux:badge variant="outline" class="group">
                                 {{ $keyword }}
-                                <button
-                                    type="button"
-                                    wire:click="removeKeyword({{ $index }})"
-                                    class="ml-1 text-gray-500 hover:text-red-600"
-                                >
+                                <button type="button" wire:click="removeKeyword({{ $index }})"
+                                    class="ml-1 text-gray-500 hover:text-red-600">
                                     ×
                                 </button>
                             </flux:badge>
                         @endforeach
                     </div>
                 @else
-                    <flux:text size="sm" class="text-gray-500 dark:text-gray-500 italic mt-2">No keywords added yet.</flux:text>
+                    <flux:text size="sm" class="text-gray-500 dark:text-gray-500 italic mt-2">No keywords added
+                        yet.</flux:text>
                 @endif
             </flux:field>
         </flux:tab.panel>
@@ -377,13 +361,10 @@ new class extends Component {
             <flux:heading size="lg">Twitter Card Settings</flux:heading>
 
             <div class="flex items-center justify-between">
-                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Optimize how your content appears when shared on Twitter/X</flux:text>
-                <x-ai-button
-                    wire:click="generateTwitterCard"
-                    wire:loading.attr="disabled"
-                    wire:target="generateTwitterCard"
-                    loadingText="Generating..."
-                >
+                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Optimize how your content appears
+                    when shared on Twitter/X</flux:text>
+                <x-ai-button wire:click="generateTwitterCard" wire:loading.attr="disabled"
+                    wire:target="generateTwitterCard" loadingText="Generating...">
                     Generate Twitter Card
                 </x-ai-button>
             </div>
@@ -401,9 +382,11 @@ new class extends Component {
 
             <flux:field>
                 <flux:label>Twitter Title</flux:label>
-                <flux:input wire:model.blur="twitterTitle" type="text" placeholder="Enter Twitter title (70 characters max)" />
+                <flux:input wire:model.blur="twitterTitle" type="text"
+                    placeholder="Enter Twitter title (70 characters max)" />
                 @if ($twitterTitle)
-                    <flux:text size="sm" class="{{ strlen($twitterTitle) > 70 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                    <flux:text size="sm"
+                        class="{{ strlen($twitterTitle) > 70 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                         {{ strlen($twitterTitle) }} characters
                     </flux:text>
                 @endif
@@ -413,11 +396,10 @@ new class extends Component {
                 <div class="space-y-2">
                     <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
                     @foreach ($twitterTitleSuggestions as $suggestion)
-                        <div
-                            wire:click="useTwitterTitleSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20"
-                        >
-                            <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                        <div wire:click="useTwitterTitleSuggestion('{{ addslashes($suggestion) }}')"
+                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                            <flux:text size="sm">{{ $suggestion }} <span
+                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
                         </div>
                     @endforeach
                 </div>
@@ -425,9 +407,11 @@ new class extends Component {
 
             <flux:field>
                 <flux:label>Twitter Description</flux:label>
-                <flux:textarea wire:model.blur="twitterDescription" placeholder="Enter Twitter description (200 characters max)" rows="3" />
+                <flux:textarea wire:model.blur="twitterDescription"
+                    placeholder="Enter Twitter description (200 characters max)" rows="3" />
                 @if ($twitterDescription)
-                    <flux:text size="sm" class="{{ strlen($twitterDescription) > 200 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                    <flux:text size="sm"
+                        class="{{ strlen($twitterDescription) > 200 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                         {{ strlen($twitterDescription) }} characters
                     </flux:text>
                 @endif
@@ -437,11 +421,10 @@ new class extends Component {
                 <div class="space-y-2">
                     <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
                     @foreach ($twitterDescriptionSuggestions as $suggestion)
-                        <div
-                            wire:click="useTwitterDescriptionSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20"
-                        >
-                            <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                        <div wire:click="useTwitterDescriptionSuggestion('{{ addslashes($suggestion) }}')"
+                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                            <flux:text size="sm">{{ $suggestion }} <span
+                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
                         </div>
                     @endforeach
                 </div>
@@ -454,14 +437,8 @@ new class extends Component {
 
     <div class="flex items-center justify-between">
         <flux:heading size="md">SEO Analysis</flux:heading>
-        <flux:button
-            wire:click="analyzeSeo"
-            size="sm"
-            variant="primary"
-            wire:loading.attr="disabled"
-            wire:target="analyzeSeo"
-            icon="search"
-        >
+        <flux:button wire:click="analyzeSeo" size="sm" variant="primary" wire:loading.attr="disabled"
+            wire:target="analyzeSeo" icon="search">
             <span wire:loading.remove wire:target="analyzeSeo">Analyze SEO</span>
             <span wire:loading wire:target="analyzeSeo">Analyzing...</span>
         </flux:button>
@@ -471,10 +448,8 @@ new class extends Component {
         <div class="space-y-4 rounded-lg border border-gray-200 p-4 dark:border-gray-700">
             <div class="flex items-center justify-between">
                 <flux:heading size="sm">SEO Score</flux:heading>
-                <flux:badge
-                    size="lg"
-                    :variant="$seoAnalysis['score'] >= 80 ? 'success' : ($seoAnalysis['score'] >= 60 ? 'warning' : 'danger')"
-                >
+                <flux:badge size="lg"
+                    :variant="$seoAnalysis['score'] >= 80 ? 'success' : ($seoAnalysis['score'] >= 60 ? 'warning' : 'danger')">
                     {{ $seoAnalysis['score'] }}/100
                 </flux:badge>
             </div>
@@ -484,11 +459,9 @@ new class extends Component {
                     <flux:text size="sm" class="font-medium mb-2">Suggested Keywords (click to add):</flux:text>
                     <div class="flex flex-wrap gap-2">
                         @foreach ($seoAnalysis['keywords'] as $keyword)
-                            <flux:badge
-                                variant="outline"
+                            <flux:badge variant="outline"
                                 class="cursor-pointer hover:bg-blue-50 hover:border-blue-500 dark:hover:bg-blue-900/20 dark:hover:border-blue-500 {{ in_array($keyword, $keywords) ? 'opacity-50' : '' }}"
-                                wire:click="addKeyword('{{ addslashes($keyword) }}')"
-                            >
+                                wire:click="addKeyword('{{ addslashes($keyword) }}')">
                                 {{ $keyword }}
                                 @if (in_array($keyword, $keywords))
                                     <span class="ml-1">✓</span>
@@ -503,10 +476,14 @@ new class extends Component {
 
             @if (count($seoAnalysis['issues']) > 0)
                 <div>
-                    <flux:text size="sm" class="font-medium text-red-600 dark:text-red-400 mb-2">Issues:</flux:text>
+                    <flux:text size="sm" class="font-medium text-red-600 dark:text-red-400 mb-2">Issues:
+                    </flux:text>
                     <ul class="list-disc space-y-1 pl-5">
                         @foreach ($seoAnalysis['issues'] as $issue)
-                            <li><flux:text size="sm" class="text-red-600 dark:text-red-400">{{ $issue }}</flux:text></li>
+                            <li>
+                                <flux:text size="sm" class="text-red-600 dark:text-red-400">{{ $issue }}
+                                </flux:text>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -514,10 +491,13 @@ new class extends Component {
 
             @if (count($seoAnalysis['recommendations']) > 0)
                 <div>
-                    <flux:text size="sm" class="font-medium text-blue-600 dark:text-blue-400 mb-2">Recommendations:</flux:text>
+                    <flux:text size="sm" class="font-medium text-blue-600 dark:text-blue-400 mb-2">
+                        Recommendations:</flux:text>
                     <ul class="list-disc space-y-1 pl-5">
                         @foreach ($seoAnalysis['recommendations'] as $recommendation)
-                            <li><flux:text size="sm">{{ $recommendation }}</flux:text></li>
+                            <li>
+                                <flux:text size="sm">{{ $recommendation }}</flux:text>
+                            </li>
                         @endforeach
                     </ul>
                 </div>

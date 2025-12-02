@@ -36,26 +36,26 @@ new class extends Component {
         <flux:heading size="xl">Add Video</flux:heading>
     </div>
 
-    <flux:separator variant="subtle" class="my-4"/>
+    <flux:separator variant="subtle" class="my-4" />
 
     <div class="relative p-3 flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <div class="space-y-6">
             <form wire:submit="update" class="space-y-6">
                 <flux:field>
-                    <flux:input wire:model="title" type="text" label="Title"/>
-                    <flux:error name="title"/>
+                    <flux:input wire:model="title" type="text" label="Title" />
+                    <flux:error name="title" />
                 </flux:field>
 
                 <flux:field>
-                    <flux:textarea label="Embed Link" wire:model="embedCode"/>
-                    <flux:error name="title"/>
+                    <flux:textarea label="Embed Link" wire:model="embedCode" />
+                    <flux:error name="title" />
                 </flux:field>
 
                 <flux:button type="submit" variant="primary">Update</flux:button>
             </form>
 
             <flux:card>
-                <livewire:seo-form :model="$video" :contentField="null"/>
+                <livewire:seo-form :model="$video" :contentField="null" />
             </flux:card>
         </div>
     </div>

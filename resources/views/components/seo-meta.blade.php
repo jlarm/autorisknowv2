@@ -1,8 +1,8 @@
 @props(['seo' => null, 'title' => null, 'description' => null])
 
 @php
-    $metaTitle = $seo?->meta_title ?? $title ?? config('app.name');
-    $metaDescription = $seo?->meta_description ?? $description ?? '';
+    $metaTitle = $seo?->meta_title ?? ($title ?? config('app.name'));
+    $metaDescription = $seo?->meta_description ?? ($description ?? '');
     $canonicalUrl = $seo?->canonical_url ?? url()->current();
 
     // Open Graph

@@ -16,7 +16,7 @@ new class extends Component {
 
         $video = Video::create([
             'title' => $this->title,
-            'embed_code' => $this->embedCode
+            'embed_code' => $this->embedCode,
         ]);
 
         Flux::toast(variant: 'success', text: 'Video created successfully');
@@ -31,19 +31,19 @@ new class extends Component {
         <flux:heading size="xl">Add Video</flux:heading>
     </div>
 
-    <flux:separator variant="subtle" class="my-4"/>
+    <flux:separator variant="subtle" class="my-4" />
 
     <div class="relative p-3 flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
         <form wire:submit="save" class="grid grid-cols-3 gap-6">
             <div class="col-span-2 space-y-6">
                 <flux:field>
-                    <flux:input wire:model="title" type="text" label="Title"/>
-                    <flux:error name="title"/>
+                    <flux:input wire:model="title" type="text" label="Title" />
+                    <flux:error name="title" />
                 </flux:field>
 
                 <flux:field>
-                    <flux:textarea label="Embed Link" wire:model="embedCode"/>
-                    <flux:error name="title"/>
+                    <flux:textarea label="Embed Link" wire:model="embedCode" />
+                    <flux:error name="title" />
                 </flux:field>
 
                 <flux:button type="submit" variant="primary">Save</flux:button>

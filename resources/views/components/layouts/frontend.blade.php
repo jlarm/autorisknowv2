@@ -16,6 +16,7 @@
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+
 <head>
     <title>Automotive Risk Management Partners</title>
     @include('partials.head', [
@@ -36,8 +37,10 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #020617; /* Slate 950/Black */
-            color: #e2e8f0; /* Slate 200 */
+            background-color: #020617;
+            /* Slate 950/Black */
+            color: #e2e8f0;
+            /* Slate 200 */
             overflow-x: hidden;
         }
 
@@ -45,13 +48,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0f172a;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #334155;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #475569;
         }
@@ -65,7 +71,8 @@
             height: 100vh;
             pointer-events: none;
             z-index: 1;
-            opacity: 0.04; /* Slightly lower opacity for subtlety */
+            opacity: 0.04;
+            /* Slightly lower opacity for subtlety */
             /* High frequency turbulence for fine grain, smaller background-size to prevent scaling up */
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             background-size: 96px 96px;
@@ -73,28 +80,55 @@
 
         /* Organic Blob Animations */
         @keyframes floatOne {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(100px, 50px) scale(1.1); }
-            66% { transform: translate(-50px, 100px) scale(0.95); }
-            100% { transform: translate(0px, 0px) scale(1); }
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(100px, 50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 100px) scale(0.95);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
         }
 
         @keyframes floatTwo {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(-80px, -60px) scale(1.1); }
-            66% { transform: translate(60px, -30px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(-80px, -60px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(60px, -30px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
         }
 
-        .animate-blob-1 { animation: floatOne 25s infinite ease-in-out alternate; }
-        .animate-blob-2 { animation: floatTwo 30s infinite ease-in-out alternate; }
+        .animate-blob-1 {
+            animation: floatOne 25s infinite ease-in-out alternate;
+        }
+
+        .animate-blob-2 {
+            animation: floatTwo 30s infinite ease-in-out alternate;
+        }
 
         /* Dark Mode Glass Panel - refined for reference look */
         .glass-panel {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 8px 20px -6px rgba(0,0,0,0.3);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 8px 20px -6px rgba(0, 0, 0, 0.3);
         }
 
         .glass-panel:hover {
@@ -103,18 +137,22 @@
         }
     </style>
 </head>
-<body class="relative min-h-screen text-slate-400 font-sans selection:bg-[#EC7700]/30 selection:text-white bg-[#020617]">
-<div class="relative min-h-screen text-slate-300 selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden bg-[#020617]">
-    <x-frontend.background />
 
-    <x-navigation />
+<body
+    class="relative min-h-screen text-slate-400 font-sans selection:bg-[#EC7700]/30 selection:text-white bg-[#020617]">
+    <div
+        class="relative min-h-screen text-slate-300 selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden bg-[#020617]">
+        <x-frontend.background />
 
-    <div class="relative z-10 pt-24 pb-12 min-h-screen flex flex-col">
-        {{ $slot }}
+        <x-navigation />
+
+        <div class="relative z-10 pt-24 pb-12 min-h-screen flex flex-col">
+            {{ $slot }}
+        </div>
+
+        <x-frontend.footer />
     </div>
-
-    <x-frontend.footer />
-</div>
-@fluxScripts
+    @fluxScripts
 </body>
+
 </html>
