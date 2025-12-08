@@ -21,6 +21,9 @@
                     :current="request()->routeIs('posts.*')" wire:navigate>{{ __('Posts') }}</flux:navlist.item>
                 <flux:navlist.item icon="video-camera" :href="route('videos.index')"
                     :current="request()->routeIs('videos.*')" wire:navigate>{{ __('Videos') }}</flux:navlist.item>
+                <flux:navlist.item icon="folder-open" :href="route('contact-form-submissions.index')"
+                    :current="request()->routeIs('contact.*')" wire:navigate>{{ __('Form Submissions') }}
+                </flux:navlist.item>
             </flux:navlist.group>
         </flux:navlist>
 

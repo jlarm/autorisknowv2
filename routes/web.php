@@ -35,6 +35,8 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
         Route::livewire('videos', 'pages::video.index')->name('videos.index');
         Route::livewire('videos/create', 'pages::video.create')->name('videos.create');
         Route::livewire('videos/{video}/edit', 'pages::video.edit')->name('videos.edit');
+
+        Route::view('contact-form-submissions', 'contact.index')->name('contact-form-submissions.index');
     });
 });
 

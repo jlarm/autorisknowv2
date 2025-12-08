@@ -12,7 +12,7 @@ new class extends Component {
         return Cache::remember('videos.index', now()->addDay(), static function (): Collection {
             return Video::query()
                 ->select(['title', 'embed_code'])
-                ->latest()
+                ->latest(12)
                 ->get();
         });
     }
