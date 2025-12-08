@@ -10,7 +10,8 @@
                 design.</p>
             <div class="flex flex-col items-center gap-4 mb-16">
                 <a class="bg-[#036482] hover:bg-[#EC7700] text-white font-bold px-8 py-3 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-[#036482]/20 hover:shadow-[#EC7700]/20 flex items-center gap-2 border border-white/10"
-                    href="blob:https://5s25v4qaolvtri8m8yf8y320bskk9fp7pmb6y1k93o3t9un3l6-h833788197.scf.usercontent.goog/db4386be-10c5-428c-a77d-e17fb9b70dfe#/contact"
+                   wire:navigate
+                    href="{{ route('contact') }}"
                     data-discover="true">Get started now <svg xmlns="http://www.w3.org/2000/svg" width="24"
                         height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4"
@@ -28,7 +29,7 @@
                         <div class="w-3 h-3 rounded-full bg-green-500/20"></div>
                         <div
                             class="ml-4 px-3 py-1 rounded-md bg-black/20 text-[10px] text-slate-500 font-mono flex-1 text-center max-w-[200px] mx-auto">
-                            dashboard.autosecure.com</div>
+                            dashboard.armp.com</div>
                     </div>
                     <div class="relative aspect-[16/9] overflow-hidden bg-[#020617]">
                         <div class="absolute inset-0 p-6 grid grid-cols-4 gap-4 opacity-80">
@@ -65,7 +66,7 @@
         </div>
         <section class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-white mb-4">Why Choose AutoSecure?</h2>
+                <h2 class="text-4xl font-bold text-white mb-4">Why Choose ARMP?</h2>
                 <p class="text-slate-400">Benefits designed to provide a seamless, secure experience.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -147,7 +148,8 @@
                         <p class="text-slate-400 mb-8 leading-relaxed">Manage, track, and audit all compliance risks on
                             a single platform. A seamless experience with no compromises.</p><a
                             class="text-[#EC7700] font-semibold flex items-center gap-2 hover:gap-3 transition-all text-sm"
-                            href="blob:https://5s25v4qaolvtri8m8yf8y320bskk9fp7pmb6y1k93o3t9un3l6-h833788197.scf.usercontent.goog/db4386be-10c5-428c-a77d-e17fb9b70dfe#/services"
+                            wire:navigate
+                            href="{{ route('solutions') }}"
                             data-discover="true">Explore platform <svg xmlns="http://www.w3.org/2000/svg"
                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -225,15 +227,13 @@
             <div class="flex justify-between items-end mb-12">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-2">Your Questions, Answered</h2>
-                    <p class="text-slate-400">Find everything you need to know about AutoSecure.</p>
-                </div><a class="text-[#EC7700] text-sm font-bold hidden sm:block hover:underline"
-                    href="blob:https://5s25v4qaolvtri8m8yf8y320bskk9fp7pmb6y1k93o3t9un3l6-h833788197.scf.usercontent.goog/db4386be-10c5-428c-a77d-e17fb9b70dfe#/contact"
-                    data-discover="true">Contact Support ↗</a>
+                    <p class="text-slate-400">Find everything you need to know about ARMP.</p>
+                </div>
             </div>
             <div class="space-y-4">
                 <div class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm"><button
                         class="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-white/5 transition-colors"><span
-                            class="text-slate-200 font-medium">What is AutoSecure?</span><svg
+                            class="text-slate-200 font-medium">What is ARMP?</span><svg
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 text-slate-600"
