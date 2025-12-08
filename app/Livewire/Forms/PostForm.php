@@ -7,6 +7,7 @@ namespace App\Livewire\Forms;
 use App\Enums\Status;
 use App\Enums\Visibility;
 use App\Models\Post;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -18,7 +19,6 @@ final class PostForm extends Form
     #[Validate('required|string|min:3|max:255')]
     public string $title = '';
 
-    #[Validate('required|string|min:3|max:255|unique:posts,slug')]
     public string $slug = '';
 
     #[Validate('nullable|string')]
@@ -42,7 +42,20 @@ final class PostForm extends Form
      */
     public function rules(): array
     {
+        $uniqueRule = Rule::unique('posts', 'slug');
+
+        if ($this->post) {
+            $uniqueRule->ignore($this->post->id);
+        }
+
         return [
+            'slug' => [
+                'required',
+                'string',
+                'min:3',
+                'max:255',
+                $uniqueRule,
+            ],
             'status' => ['required', new Enum(Status::class)],
             'visibility' => ['required', new Enum(Visibility::class)],
         ];
