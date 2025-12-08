@@ -11,30 +11,34 @@
                 </p>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Platform</h4>
                 <ul class="space-y-2 text-sm text-slate-500">
                     <li>
-                        <Link to="/services" class="hover:text-cyan-400 transition-colors">Infrastructure</Link>
+                        <a href="{{ route('about') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">About</a>
                     </li>
                     <li>
-                        <Link to="/security" class="hover:text-cyan-400 transition-colors">Security</Link>
+                        <a href="{{ route('solutions') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Solutions</a>
                     </li>
                     <li>
-                        <Link to="/services" class="hover:text-cyan-400 transition-colors">Audits</Link>
+                        <a href="{{ route('security') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Security</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('packages') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Packages</a>
                     </li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wider">Company</h4>
                 <ul class="space-y-2 text-sm text-slate-500">
                     <li>
-                        <Link to="/about" class="hover:text-cyan-400 transition-colors">About Us</Link>
+                        <a href="{{ route('fi') }}" wire:navigate to="/about" class="hover:text-[#EC7700] transition-colors">F&I</a>
                     </li>
                     <li>
-                        <Link to="/news" class="hover:text-cyan-400 transition-colors">Updates</Link>
+                        <a href="{{ route('videos') }}" wire:navigate to="/news" class="hover:text-[#EC7700] transition-colors">Videos</a>
                     </li>
                     <li>
-                        <Link to="/contact" class="hover:text-cyan-400 transition-colors">Support</Link>
+                        <a href="{{ route('news.index') }}" wire:navigate to="/contact" class="hover:text-[#EC7700] transition-colors">News</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact') }}" wire:navigate to="/services" class="hover:text-[#EC7700] transition-colors">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -43,8 +47,7 @@
             class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
             <p>&copy; {{ now()->format('Y') }} Automotive Risk Management Partners</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="#" class="hover:text-slate-400 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-slate-400 transition-colors">Terms of Service</a>
+                <a href="{{ route('privacy') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Privacy Policy</a>
             </div>
         </div>
     </div>

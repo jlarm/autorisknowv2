@@ -22,6 +22,7 @@ Route::view('f-and-i', 'frontend.fi')->name('fi');
 Route::view('contact', 'frontend.contact')->name('contact');
 Route::get('videos', fn (): Factory|View => view('frontend.videos'))->name('videos');
 Route::get('news', fn (): Factory|View => view('frontend.posts'))->name('news.index');
+Route::view('privacy', 'frontend.privacy')->name('privacy');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('home', 'dashboard')->name('home');
