@@ -44,7 +44,7 @@ final class PostForm extends Form
     {
         $uniqueRule = Rule::unique('posts', 'slug');
 
-        if ($this->post) {
+        if ($this->post instanceof Post) {
             $uniqueRule->ignore($this->post->id);
         }
 

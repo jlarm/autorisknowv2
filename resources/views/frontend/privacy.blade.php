@@ -11,7 +11,15 @@
         </section>
         <div class="max-w-2xl mx-auto">
             <p class="text-slate-400 leading-relaxed mb-6">
-                Google collects information to provide better services to all users. We may collect information such as your device type, IP address, and cookies to improve our services, personalize content, and analyze trends. This information helps us understand how you use our services and tailor them to your preferences. We may also use this information to protect against misuse and to comply with legal obligations. Google may share your information with third parties for purposes such as processing payments, providing customer support, or complying with legal requests. You have options to manage your privacy settings, including controlling what information is shared with Google and deleting your data. By using our services, you agree to the collection and use of your information as described in this notice.
+                Google collects information to provide better services to all users. We may collect information such as
+                your device type, IP address, and cookies to improve our services, personalize content, and analyze
+                trends. This information helps us understand how you use our services and tailor them to your
+                preferences. We may also use this information to protect against misuse and to comply with legal
+                obligations. Google may share your information with third parties for purposes such as processing
+                payments, providing customer support, or complying with legal requests. You have options to manage your
+                privacy settings, including controlling what information is shared with Google and deleting your data.
+                By using our services, you agree to the collection and use of your information as described in this
+                notice.
             </p>
         </div>
     </div>

@@ -10,12 +10,10 @@
                 design.</p>
             <div class="flex flex-col items-center gap-4 mb-16">
                 <a class="bg-[#036482] hover:bg-[#EC7700] text-white font-bold px-8 py-3 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-[#036482]/20 hover:shadow-[#EC7700]/20 flex items-center gap-2 border border-white/10"
-                   wire:navigate
-                    href="{{ route('contact') }}"
-                    data-discover="true">Get started now <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4"
-                        aria-hidden="true">
+                    wire:navigate href="{{ route('contact') }}" data-discover="true">Get started now <svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4" aria-hidden="true">
                         <path d="M5 12h14"></path>
                         <path d="m12 5 7 7-7 7"></path>
                     </svg></a>
@@ -148,11 +146,9 @@
                         <p class="text-slate-400 mb-8 leading-relaxed">Manage, track, and audit all compliance risks on
                             a single platform. A seamless experience with no compromises.</p><a
                             class="text-[#EC7700] font-semibold flex items-center gap-2 hover:gap-3 transition-all text-sm"
-                            wire:navigate
-                            href="{{ route('solutions') }}"
-                            data-discover="true">Explore platform <svg xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            wire:navigate href="{{ route('solutions') }}" data-discover="true">Explore platform <svg
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4" aria-hidden="true">
                                 <path d="M5 12h14"></path>
                                 <path d="m12 5 7 7-7 7"></path>

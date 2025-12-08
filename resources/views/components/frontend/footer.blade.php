@@ -13,32 +13,40 @@
             <div>
                 <ul class="space-y-2 text-sm text-slate-500">
                     <li>
-                        <a href="{{ route('about') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">About</a>
+                        <a href="{{ route('about') }}" wire:navigate
+                            class="hover:text-[#EC7700] transition-colors">About</a>
                     </li>
                     <li>
-                        <a href="{{ route('solutions') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Solutions</a>
+                        <a href="{{ route('solutions') }}" wire:navigate
+                            class="hover:text-[#EC7700] transition-colors">Solutions</a>
                     </li>
                     <li>
-                        <a href="{{ route('security') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Security</a>
+                        <a href="{{ route('security') }}" wire:navigate
+                            class="hover:text-[#EC7700] transition-colors">Security</a>
                     </li>
                     <li>
-                        <a href="{{ route('packages') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Packages</a>
+                        <a href="{{ route('packages') }}" wire:navigate
+                            class="hover:text-[#EC7700] transition-colors">Packages</a>
                     </li>
                 </ul>
             </div>
             <div>
                 <ul class="space-y-2 text-sm text-slate-500">
                     <li>
-                        <a href="{{ route('fi') }}" wire:navigate to="/about" class="hover:text-[#EC7700] transition-colors">F&I</a>
+                        <a href="{{ route('fi') }}" wire:navigate to="/about"
+                            class="hover:text-[#EC7700] transition-colors">F&I</a>
                     </li>
                     <li>
-                        <a href="{{ route('videos') }}" wire:navigate to="/news" class="hover:text-[#EC7700] transition-colors">Videos</a>
+                        <a href="{{ route('videos') }}" wire:navigate to="/news"
+                            class="hover:text-[#EC7700] transition-colors">Videos</a>
                     </li>
                     <li>
-                        <a href="{{ route('news.index') }}" wire:navigate to="/contact" class="hover:text-[#EC7700] transition-colors">News</a>
+                        <a href="{{ route('news.index') }}" wire:navigate to="/contact"
+                            class="hover:text-[#EC7700] transition-colors">News</a>
                     </li>
                     <li>
-                        <a href="{{ route('contact') }}" wire:navigate to="/services" class="hover:text-[#EC7700] transition-colors">Contact</a>
+                        <a href="{{ route('contact') }}" wire:navigate to="/services"
+                            class="hover:text-[#EC7700] transition-colors">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +55,8 @@
             class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-600">
             <p>&copy; {{ now()->format('Y') }} Automotive Risk Management Partners</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <a href="{{ route('privacy') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Privacy Policy</a>
+                <a href="{{ route('privacy') }}" wire:navigate class="hover:text-[#EC7700] transition-colors">Privacy
+                    Policy</a>
             </div>
         </div>
     </div>
