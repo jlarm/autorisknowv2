@@ -30,7 +30,7 @@ new class extends Component {
 
         Flux::toast(variant: 'success', text: 'Post created successfully');
 
-        $this->redirect('/posts', navigate: true);
+        $this->redirect('/dashboard/posts', navigate: true);
     }
 };
 ?>
