@@ -20,6 +20,8 @@ Route::view('about', 'frontend.about')->name('about');
 Route::view('solutions', 'frontend.solutions')->name('solutions');
 Route::view('security', 'frontend.security')->name('security');
 Route::view('packages', 'frontend.packages')->name('packages');
+Route::view('f-and-i', 'frontend.fi')->name('fi');
+Route::view('contact', 'frontend.contact')->name('contact');
 
 Route::middleware(['auth', 'verified'])->group(function (): void {
     Route::view('home', 'dashboard')->name('home');

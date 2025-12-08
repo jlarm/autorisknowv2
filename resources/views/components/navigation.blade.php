@@ -29,10 +29,10 @@ $nextTick(() => { ready = true });">
                     class="{{ request()->routeIs('security') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Security</a>
                 <a wire:navigate href="{{ route('packages') }}"
                     class="{{ request()->routeIs('packages') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Packages</a>
-                <a href="#"
-                    class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">F&I</a>
-                <a href="#"
-                    class="text-slate-400 text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Contact</a>
+                <a wire:navigate href="{{ route('fi') }}"
+                    class="{{ request()->routeIs('fi') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">F&I</a>
+                <a wire:navigate href="{{ route('contact') }}"
+                    class="{{ request()->routeIs('contact') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Contact</a>
                 <a wire:navigate href="{{ route('videos') }}"
                     class="{{ request()->routeIs('videos') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Videos</a>
                 <a wire:navigate href="{{ route('news.index') }}"
