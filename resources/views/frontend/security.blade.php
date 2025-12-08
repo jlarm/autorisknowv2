@@ -209,12 +209,5 @@
                     protect against zero-day exploits and ransomware.</p>
             </div>
         </div>
-
-        <div class="mt-20 text-center">
-            <p class="text-slate-400 mb-6">Ready to secure your network?</p><a
-                class="inline-block text-white font-bold text-lg border-b-2 border-[#EC7700] hover:text-[#EC7700] transition-colors pb-1"
-                href="blob:https://10gku9m5hd3983vhcmc9cnj1kd8cq91g83xdrpp9m53gr3bu6w-h836671216.scf.usercontent.goog/e4c89905-7767-4d2d-aab6-b45e5f8fcbe0#/contact"
-                data-discover="true">Get your free security assessment</a>
-        </div>
     </div>
 </x-layouts.frontend>
