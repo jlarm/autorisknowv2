@@ -1,4 +1,4 @@
-<x-layouts.frontend>
+<x-layouts.frontend title="Solutions">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div
