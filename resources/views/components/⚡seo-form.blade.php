@@ -41,6 +41,8 @@ new class extends Component {
 
     public bool $isGeneratingTwitterCard = false;
 
+    protected $listeners = ['save-seo' => 'saveQuietly'];
+
     public function mount(): void
     {
         if ($this->model->seo) {
@@ -215,7 +217,7 @@ new class extends Component {
         $this->keywords = array_values($this->keywords);
     }
 
-    public function save(): void
+    public function saveQuietly(): void
     {
         $this->model->seo()->updateOrCreate(
             ['seoable_id' => $this->model->id, 'seoable_type' => get_class($this->model)],
@@ -229,9 +231,14 @@ new class extends Component {
             ],
         );
 
-        Flux::toast(variant: 'success', text: 'SEO updated successfully');
-
         $this->dispatch('seo-saved');
+    }
+
+    public function save(): void
+    {
+        $this->saveQuietly();
+
+        Flux::toast(variant: 'success', text: 'SEO updated successfully');
     }
 
     public function updated($property): void

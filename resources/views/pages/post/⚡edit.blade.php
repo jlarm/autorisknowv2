@@ -19,6 +19,8 @@ new class extends Component {
 
     public function update(): void
     {
+        $this->dispatch('save-seo');
+
         $this->form->update();
 
         Flux::toast(text: 'Post updated successfully', variant: 'success');
