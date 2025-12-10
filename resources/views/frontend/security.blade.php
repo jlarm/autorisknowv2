@@ -1,4 +1,18 @@
-<x-layouts.frontend title="Security">
+<x-layouts.frontend
+    title="Ridgeback Network Defense - Continuous Monitoring for FTC Safeguards Rule Compliance | ARMP"
+    description="Ridgeback Network Defense provides 24/7/365 continuous monitoring of dealership technical infrastructure. Purpose-built appliance for vulnerability scanning,
+  penetration testing, dark web monitoring, and FTC Safeguards Rule compliance without disrupting operations."
+    keywords="Ridgeback Network Defense, FTC Safeguards Rule continuous monitoring, dealership cyber security, vulnerability scanning, penetration testing automotive, dark web
+  monitoring, network security appliance, automotive cybersecurity, dealership network monitoring, compliance reporting, asset management, threat intelligence"
+    ogTitle="Ridgeback Network Defense - 24/7 Network Monitoring for Automotive Dealerships"
+    ogDescription="The watchdog that never sleeps. Ridgeback is a purpose-built appliance providing continuous monitoring, vulnerability scanning, penetration testing, and dark
+  web monitoring to satisfy FTC Safeguards Rule requirements."
+    ogImage="{{ asset('ridgeback-security.webp') }}"
+    twitterTitle="Ridgeback Network Defense - Complete Visibility. Total Control."
+    twitterDescription="24/7/365 continuous monitoring for automotive dealerships. Real-time scanning, automated reporting, and compliance made simple with Ridgeback Network
+  Defense."
+    canonicalUrl="{{ route('security') }}"
+>
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div
