@@ -119,9 +119,6 @@ new class extends Component {
                     <flux:button href="{{ route('news.show', $form->post) }}" target="_blank" class="w-full">View</flux:button>
                 </div>
             </flux:card>
-
-            <flux:card>
-                <flux:heading size="lg">Search Appearance</flux:heading>
-            </flux:card>
         </div>
     </form>
+</div>
