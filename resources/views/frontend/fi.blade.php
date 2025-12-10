@@ -1,4 +1,16 @@
-<x-layouts.frontend title="F&I">
+<x-layouts.frontend
+    title="F&I Profits - Higher Finance & Insurance Profits Immediately | ARMP"
+    description="Discover how ARMP can help your automotive dealership achieve higher F&I profits immediately. Learn about our F&I compliance solutions, sales process
+  optimization, and proven strategies to increase finance and insurance profitability."
+    keywords="F&I profits, finance and insurance profits, dealership F&I, automotive finance profits, F&I compliance, F&I sales process, dealership profitability, finance office
+   optimization, Red Flags Rule, OFAC compliance"
+    ogTitle="Higher F&I Profits, Immediately - ARMP Solutions"
+    ogDescription="Learn how ARMP helps automotive dealerships increase F&I profits immediately through compliance, process optimization, and proven sales strategies."
+    ogImage="{{ asset('fi-profits.webp') }}"
+    twitterTitle="Higher F&I Profits, Immediately"
+    twitterDescription="Discover ARMP's proven strategies to increase your dealership's F&I profits while maintaining full compliance with regulations."
+    canonicalUrl="{{ route('fi') }}"
+>
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div
