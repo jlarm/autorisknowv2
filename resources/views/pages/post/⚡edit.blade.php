@@ -21,7 +21,7 @@ new class extends Component {
     {
         $this->form->update();
 
-        $this->redirect(route('posts.index'));
+        Flux::toast(text: 'Post updated successfully', variant: 'success');
     }
 
     public function removeFeaturedImage(): void

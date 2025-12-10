@@ -24,7 +24,6 @@ final class PostForm extends Form
     #[Validate('nullable|string')]
     public ?string $content = '';
 
-    #[Validate('nullable|image|max:10240')]
     public $featuredImage;
 
     #[Validate('nullable|url')]
@@ -55,6 +54,34 @@ final class PostForm extends Form
                 'min:3',
                 'max:255',
                 $uniqueRule,
+            ],
+            'featuredImage' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    if ($value === null) {
+                        return;
+                    }
+
+                    if (is_string($value)) {
+                        return;
+                    }
+
+                    if (! $value instanceof \Illuminate\Http\UploadedFile) {
+                        $fail('The featured image must be a valid file.');
+
+                        return;
+                    }
+
+                    if (! in_array($value->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/webp'])) {
+                        $fail('The featured image must be an image.');
+
+                        return;
+                    }
+
+                    if ($value->getSize() > 10240 * 1024) {
+                        $fail('The featured image must not be greater than 10MB.');
+                    }
+                },
             ],
             'status' => ['required', new Enum(Status::class)],
             'visibility' => ['required', new Enum(Visibility::class)],
