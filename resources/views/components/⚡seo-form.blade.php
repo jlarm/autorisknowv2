@@ -29,18 +29,6 @@ new class extends Component {
 
     public bool $isAnalyzing = false;
 
-    public string $twitterCard = 'summary_large_image';
-
-    public string $twitterTitle = '';
-
-    public string $twitterDescription = '';
-
-    public array $twitterTitleSuggestions = [];
-
-    public array $twitterDescriptionSuggestions = [];
-
-    public bool $isGeneratingTwitterCard = false;
-
     protected $listeners = ['save-seo' => 'saveQuietly'];
 
     public function mount(): void
@@ -49,9 +37,6 @@ new class extends Component {
             $this->metaTitle = $this->model->seo->meta_title ?? '';
             $this->metaDescription = $this->model->seo->meta_description ?? '';
             $this->keywords = $this->model->seo->keywords ?? [];
-            $this->twitterCard = $this->model->seo->twitter_card ?? 'summary_large_image';
-            $this->twitterTitle = $this->model->seo->twitter_title ?? '';
-            $this->twitterDescription = $this->model->seo->twitter_description ?? '';
         }
     }
 
@@ -86,7 +71,7 @@ new class extends Component {
 
             $this->metaDescription = $result['description'];
             $this->descriptionSuggestions = $result['alternatives'];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->addError('metaDescription', 'Failed to generate meta description: ' . $e->getMessage());
         } finally {
             $this->isGeneratingDescription = false;
@@ -111,38 +96,10 @@ new class extends Component {
 
             $this->metaTitle = $result['title'];
             $this->titleSuggestions = $result['alternatives'];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->addError('metaTitle', 'Failed to generate SEO title: ' . $e->getMessage());
         } finally {
             $this->isGeneratingTitle = false;
-        }
-    }
-
-    public function generateTwitterCard(SeoService $seoService): void
-    {
-        if (!config('services.anthropic.api_key')) {
-            $this->addError('twitterCard', 'Anthropic API key not configured. Please add ANTHROPIC_API_KEY to your .env file.');
-
-            return;
-        }
-
-        $this->isGeneratingTwitterCard = true;
-
-        try {
-            $result = $seoService->generateTwitterCard([
-                'title' => $this->model->title,
-                'content' => $this->getModelContent(),
-            ]);
-
-            $this->twitterCard = $result['card'];
-            $this->twitterTitle = $result['title'];
-            $this->twitterDescription = $result['description'];
-            $this->twitterTitleSuggestions = $result['titleAlternatives'] ?? [];
-            $this->twitterDescriptionSuggestions = $result['descriptionAlternatives'] ?? [];
-        } catch (\Exception $e) {
-            $this->addError('twitterCard', 'Failed to generate Twitter Card: ' . $e->getMessage());
-        } finally {
-            $this->isGeneratingTwitterCard = false;
         }
     }
 
@@ -163,7 +120,7 @@ new class extends Component {
                 'metaTitle' => $this->metaTitle,
                 'metaDescription' => $this->metaDescription,
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->addError('seoAnalysis', 'Failed to analyze SEO: ' . $e->getMessage());
         } finally {
             $this->isAnalyzing = false;
@@ -180,18 +137,6 @@ new class extends Component {
     {
         $this->metaDescription = $suggestion;
         $this->descriptionSuggestions = [];
-    }
-
-    public function useTwitterTitleSuggestion(string $suggestion): void
-    {
-        $this->twitterTitle = $suggestion;
-        $this->twitterTitleSuggestions = [];
-    }
-
-    public function useTwitterDescriptionSuggestion(string $suggestion): void
-    {
-        $this->twitterDescription = $suggestion;
-        $this->twitterDescriptionSuggestions = [];
     }
 
     public function addKeyword(string $keyword): void
@@ -225,9 +170,6 @@ new class extends Component {
                 'meta_title' => $this->metaTitle,
                 'meta_description' => $this->metaDescription,
                 'keywords' => $this->keywords,
-                'twitter_card' => $this->twitterCard,
-                'twitter_title' => $this->twitterTitle,
-                'twitter_description' => $this->twitterDescription,
             ],
         );
 
@@ -248,11 +190,6 @@ new class extends Component {
             $this->descriptionSuggestions = [];
             $this->seoAnalysis = null;
         }
-
-        if (in_array($property, ['twitterTitle', 'twitterDescription', 'twitterCard'])) {
-            $this->twitterTitleSuggestions = [];
-            $this->twitterDescriptionSuggestions = [];
-        }
     }
 };
 ?>
@@ -260,185 +197,102 @@ new class extends Component {
 <div class="space-y-6">
     <flux:heading size="lg">SEO Settings</flux:heading>
 
-    <flux:tab.group>
-        <flux:tabs wire:model="tab" variant="segmented">
-            <flux:tab name="general">General</flux:tab>
-            <flux:tab name="twitter">Twitter</flux:tab>
-            <flux:tab name="billing">Billing</flux:tab>
-        </flux:tabs>
-        <flux:tab.panel name="general" class="space-y-6">
-            <flux:field>
-                <div class="flex items-center justify-between">
-                    <flux:label>SEO Title</flux:label>
-                    <x-ai-button wire:click="generateSeoTitle" wire:loading.attr="disabled"
-                        wire:target="generateSeoTitle" loadingText="Generating...">
-                        Generate SEO Title
-                    </x-ai-button>
-                </div>
-                <flux:input wire:model.blur="metaTitle" type="text"
+    <flux:field>
+        <div class="flex items-center justify-between">
+            <flux:label>SEO Title</flux:label>
+            <x-ai-button wire:click="generateSeoTitle" wire:loading.attr="disabled"
+                         wire:target="generateSeoTitle" loadingText="Generating...">
+                Generate SEO Title
+            </x-ai-button>
+        </div>
+        <flux:input wire:model.blur="metaTitle" type="text"
                     placeholder="Enter SEO title (50-60 characters)" />
-                <flux:error name="metaTitle" />
-                @if ($metaTitle)
-                    <flux:text size="sm"
-                        class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
-                        {{ strlen($metaTitle) }} characters
-                    </flux:text>
-                @endif
-            </flux:field>
+        <flux:error name="metaTitle" />
+        @if ($metaTitle)
+            <flux:text size="sm"
+                       class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                {{ strlen($metaTitle) }} characters
+            </flux:text>
+        @endif
+    </flux:field>
 
-            @if (count($titleSuggestions) > 0)
-                <div class="space-y-2">
-                    <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
-                    @foreach ($titleSuggestions as $suggestion)
-                        <div wire:click="useTitleSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                            <flux:text size="sm">{{ $suggestion }} <span
-                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
-                        </div>
-                    @endforeach
+    @if (count($titleSuggestions) > 0)
+        <div class="space-y-2">
+            <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
+            @foreach ($titleSuggestions as $suggestion)
+                <div wire:click="useTitleSuggestion('{{ addslashes($suggestion) }}')"
+                     class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                    <flux:text size="sm">{{ $suggestion }} <span
+                            class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
                 </div>
-            @endif
+            @endforeach
+        </div>
+    @endif
 
-            <flux:field>
-                <div class="flex items-center justify-between">
-                    <flux:label>Meta Description</flux:label>
-                    @if ($contentField)
-                        <x-ai-button wire:click="generateMetaDescription" wire:loading.attr="disabled"
-                            wire:target="generateMetaDescription" loadingText="Generating...">
-                            Generate Meta Description
-                        </x-ai-button>
-                    @endif
-                </div>
-                <flux:textarea wire:model.blur="metaDescription"
-                    placeholder="Enter meta description (150-160 characters)" rows="3" />
-                <flux:error name="metaDescription" />
-                @if ($metaDescription)
-                    <flux:text size="sm"
-                        class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
-                        {{ strlen($metaDescription) }} characters
-                    </flux:text>
-                @endif
-            </flux:field>
-
-            @if (count($descriptionSuggestions) > 0)
-                <div class="space-y-2">
-                    <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
-                    @foreach ($descriptionSuggestions as $suggestion)
-                        <div wire:click="useDescriptionSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                            <flux:text size="sm">{{ $suggestion }} <span
-                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-
-            <flux:field>
-                <flux:label>Keywords</flux:label>
-                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Add keywords relevant to your
-                    content. Type your own or click suggested keywords below.</flux:text>
-
-                <div class="flex gap-2 mt-2">
-                    <flux:input wire:model="newKeyword" wire:keydown.enter.prevent="addNewKeyword" type="text"
-                        placeholder="Type a keyword and press Enter" class="flex-1" />
-                    <flux:button type="button" wire:click="addNewKeyword" variant="primary">
-                        Add
-                    </flux:button>
-                </div>
-
-                @if (count($keywords) > 0)
-                    <div class="flex flex-wrap gap-2 mt-3">
-                        @foreach ($keywords as $index => $keyword)
-                            <flux:badge variant="outline" class="group">
-                                {{ $keyword }}
-                                <button type="button" wire:click="removeKeyword({{ $index }})"
-                                    class="ml-1 text-gray-500 hover:text-red-600">
-                                    ×
-                                </button>
-                            </flux:badge>
-                        @endforeach
-                    </div>
-                @else
-                    <flux:text size="sm" class="text-gray-500 dark:text-gray-500 italic mt-2">No keywords added
-                        yet.</flux:text>
-                @endif
-            </flux:field>
-        </flux:tab.panel>
-        <flux:tab.panel name="twitter" class="space-y-6">
-            <flux:heading size="lg">Twitter Card Settings</flux:heading>
-
-            <div class="flex items-center justify-between">
-                <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Optimize how your content appears
-                    when shared on Twitter/X</flux:text>
-                <x-ai-button wire:click="generateTwitterCard" wire:loading.attr="disabled"
-                    wire:target="generateTwitterCard" loadingText="Generating...">
-                    Generate Twitter Card
+    <flux:field>
+        <div class="flex items-center justify-between">
+            <flux:label>Meta Description</flux:label>
+            @if ($contentField)
+                <x-ai-button wire:click="generateMetaDescription" wire:loading.attr="disabled"
+                             wire:target="generateMetaDescription" loadingText="Generating...">
+                    Generate Meta Description
                 </x-ai-button>
+            @endif
+        </div>
+        <flux:textarea wire:model.blur="metaDescription"
+                       placeholder="Enter meta description (150-160 characters)" rows="3" />
+        <flux:error name="metaDescription" />
+        @if ($metaDescription)
+            <flux:text size="sm"
+                       class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                {{ strlen($metaDescription) }} characters
+            </flux:text>
+        @endif
+    </flux:field>
+
+    @if (count($descriptionSuggestions) > 0)
+        <div class="space-y-2">
+            <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
+            @foreach ($descriptionSuggestions as $suggestion)
+                <div wire:click="useDescriptionSuggestion('{{ addslashes($suggestion) }}')"
+                     class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                    <flux:text size="sm">{{ $suggestion }} <span
+                            class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                </div>
+            @endforeach
+        </div>
+    @endif
+
+    <flux:field>
+        <flux:label>Keywords</flux:label>
+        <flux:text size="sm" class="text-gray-600 dark:text-gray-400">Add keywords relevant to your
+            content. Type your own or click suggested keywords below.</flux:text>
+
+        <div class="flex gap-2 mt-2">
+            <flux:input wire:model="newKeyword" wire:keydown.enter.prevent="addNewKeyword" type="text"
+                        placeholder="Type a keyword and press Enter" class="flex-1" />
+            <flux:button type="button" wire:click="addNewKeyword" variant="primary">
+                Add
+            </flux:button>
+        </div>
+
+        @if (count($keywords) > 0)
+            <div class="flex flex-wrap gap-2 mt-3">
+                @foreach ($keywords as $index => $keyword)
+                    <flux:badge variant="outline" class="group">
+                        {{ $keyword }}
+                        <button type="button" wire:click="removeKeyword({{ $index }})"
+                                class="ml-1 text-gray-500 hover:text-red-600">
+                            ×
+                        </button>
+                    </flux:badge>
+                @endforeach
             </div>
-
-            <flux:field>
-                <flux:label>Twitter Card Type</flux:label>
-                <flux:select wire:model.live="twitterCard">
-                    <option value="summary">Summary (small image)</option>
-                    <option value="summary_large_image">Summary with Large Image</option>
-                    <option value="app">App Card</option>
-                    <option value="player">Player Card</option>
-                </flux:select>
-                <flux:error name="twitterCard" />
-            </flux:field>
-
-            <flux:field>
-                <flux:label>Twitter Title</flux:label>
-                <flux:input wire:model.blur="twitterTitle" type="text"
-                    placeholder="Enter Twitter title (70 characters max)" />
-                @if ($twitterTitle)
-                    <flux:text size="sm"
-                        class="{{ strlen($twitterTitle) > 70 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
-                        {{ strlen($twitterTitle) }} characters
-                    </flux:text>
-                @endif
-            </flux:field>
-
-            @if (count($twitterTitleSuggestions) > 0)
-                <div class="space-y-2">
-                    <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
-                    @foreach ($twitterTitleSuggestions as $suggestion)
-                        <div wire:click="useTwitterTitleSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                            <flux:text size="sm">{{ $suggestion }} <span
-                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-
-            <flux:field>
-                <flux:label>Twitter Description</flux:label>
-                <flux:textarea wire:model.blur="twitterDescription"
-                    placeholder="Enter Twitter description (200 characters max)" rows="3" />
-                @if ($twitterDescription)
-                    <flux:text size="sm"
-                        class="{{ strlen($twitterDescription) > 200 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
-                        {{ strlen($twitterDescription) }} characters
-                    </flux:text>
-                @endif
-            </flux:field>
-
-            @if (count($twitterDescriptionSuggestions) > 0)
-                <div class="space-y-2">
-                    <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
-                    @foreach ($twitterDescriptionSuggestions as $suggestion)
-                        <div wire:click="useTwitterDescriptionSuggestion('{{ addslashes($suggestion) }}')"
-                            class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                            <flux:text size="sm">{{ $suggestion }} <span
-                                    class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </flux:tab.panel>
-        <flux:tab.panel name="billing">...</flux:tab.panel>
-    </flux:tab.group>
+        @else
+            <flux:text size="sm" class="text-gray-500 dark:text-gray-500 italic mt-2">No keywords added
+                yet.</flux:text>
+        @endif
+    </flux:field>
 
     <flux:separator />
 
