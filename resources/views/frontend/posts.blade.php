@@ -7,10 +7,9 @@
     ogTitle="Industry News - Latest Regulations & Standards for Automotive Dealerships"
     ogDescription="Stay informed on the latest regulations and standards affecting the automotive industry. Expert insights on FTC Safeguards, OSHA, EPA, cyber security, and F&I
    compliance from ARMP."
-    ogImage="{{ asset('industry-news.webp') }}"
     twitterTitle="ARMP Industry News - Regulatory Updates & Standards"
     twitterDescription="Stay informed on the latest automotive industry regulations and standards. Expert insights on compliance, cyber security, and regulatory changes."
-    canonicalUrl="{{ route('posts') }}"
+    canonicalUrl="{{ route('news.index') }}"
 >
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
