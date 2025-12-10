@@ -28,49 +28,50 @@
                         <path d="m12 5 7 7-7 7"></path>
                     </svg></a>
             </div>
-            <div class="relative max-w-5xl mx-auto perspective-1000">
-                <div
-                    class="relative rounded-xl bg-[#0f172a]/80 border border-white/10 shadow-2xl overflow-hidden backdrop-blur-sm group transform transition-transform duration-500 hover:scale-[1.01]">
-                    <div class="h-10 bg-[#1e293b]/50 border-b border-white/5 flex items-center px-4 gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/20"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/20"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/20"></div>
-                        <div
-                            class="ml-4 px-3 py-1 rounded-md bg-black/20 text-[10px] text-slate-500 font-mono flex-1 text-center max-w-[200px] mx-auto">
-                            dashboard.armp.com</div>
-                    </div>
-                    <div class="relative aspect-[16/9] overflow-hidden bg-[#020617]">
-                        <div class="absolute inset-0 p-6 grid grid-cols-4 gap-4 opacity-80">
-                            <div class="col-span-1 bg-slate-900/50 rounded-lg border border-white/5 p-4 space-y-3">
-                                <div class="h-2 w-20 bg-slate-700/30 rounded"></div>
-                                <div class="h-8 w-full bg-slate-800/50 rounded border border-white/5"></div>
-                                <div class="h-8 w-full bg-transparent rounded"></div>
-                                <div class="h-8 w-full bg-transparent rounded"></div>
-                            </div>
-                            <div class="col-span-3 space-y-4">
-                                <div
-                                    class="h-32 bg-slate-800/30 rounded-lg border border-white/5 relative overflow-hidden">
-                                    <div
-                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cyan-500/10 to-transparent">
-                                    </div><svg class="absolute bottom-4 left-4 right-4 h-12 text-cyan-500 opacity-40"
-                                        viewBox="0 0 100 20" preserveAspectRatio="none">
-                                        <path
-                                            d="M0,20 L10,15 L20,18 L30,10 L40,14 L50,5 L60,12 L70,8 L80,14 L90,6 L100,15"
-                                            fill="none" stroke="currentColor" stroke-width="0.5"></path>
-                                    </svg>
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="h-24 bg-slate-800/30 rounded-lg border border-white/5"></div>
-                                    <div class="h-24 bg-slate-800/30 rounded-lg border border-white/5"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent">
-                        </div>
-                    </div>
-                </div>
-                <div class="absolute -inset-4 bg-cyan-500/10 blur-2xl -z-10 rounded-[2rem]"></div>
-            </div>
+            <x-ridgeback-screen />
+{{--            <div class="relative max-w-5xl mx-auto perspective-1000">--}}
+{{--                <div--}}
+{{--                    class="relative rounded-xl bg-[#0f172a]/80 border border-white/10 shadow-2xl overflow-hidden backdrop-blur-sm group transform transition-transform duration-500 hover:scale-[1.01]">--}}
+{{--                    <div class="h-10 bg-[#1e293b]/50 border-b border-white/5 flex items-center px-4 gap-2">--}}
+{{--                        <div class="w-3 h-3 rounded-full bg-red-500/20"></div>--}}
+{{--                        <div class="w-3 h-3 rounded-full bg-yellow-500/20"></div>--}}
+{{--                        <div class="w-3 h-3 rounded-full bg-green-500/20"></div>--}}
+{{--                        <div--}}
+{{--                            class="ml-4 px-3 py-1 rounded-md bg-black/20 text-[10px] text-slate-500 font-mono flex-1 text-center max-w-[200px] mx-auto">--}}
+{{--                            dashboard.armp.com</div>--}}
+{{--                    </div>--}}
+{{--                    <div class="relative aspect-[16/9] overflow-hidden bg-[#020617]">--}}
+{{--                        <div class="absolute inset-0 p-6 grid grid-cols-4 gap-4 opacity-80">--}}
+{{--                            <div class="col-span-1 bg-slate-900/50 rounded-lg border border-white/5 p-4 space-y-3">--}}
+{{--                                <div class="h-2 w-20 bg-slate-700/30 rounded"></div>--}}
+{{--                                <div class="h-8 w-full bg-slate-800/50 rounded border border-white/5"></div>--}}
+{{--                                <div class="h-8 w-full bg-transparent rounded"></div>--}}
+{{--                                <div class="h-8 w-full bg-transparent rounded"></div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-span-3 space-y-4">--}}
+{{--                                <div--}}
+{{--                                    class="h-32 bg-slate-800/30 rounded-lg border border-white/5 relative overflow-hidden">--}}
+{{--                                    <div--}}
+{{--                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-cyan-500/10 to-transparent">--}}
+{{--                                    </div><svg class="absolute bottom-4 left-4 right-4 h-12 text-cyan-500 opacity-40"--}}
+{{--                                        viewBox="0 0 100 20" preserveAspectRatio="none">--}}
+{{--                                        <path--}}
+{{--                                            d="M0,20 L10,15 L20,18 L30,10 L40,14 L50,5 L60,12 L70,8 L80,14 L90,6 L100,15"--}}
+{{--                                            fill="none" stroke="currentColor" stroke-width="0.5"></path>--}}
+{{--                                    </svg>--}}
+{{--                                </div>--}}
+{{--                                <div class="grid grid-cols-2 gap-4">--}}
+{{--                                    <div class="h-24 bg-slate-800/30 rounded-lg border border-white/5"></div>--}}
+{{--                                    <div class="h-24 bg-slate-800/30 rounded-lg border border-white/5"></div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="absolute -inset-4 bg-cyan-500/10 blur-2xl -z-10 rounded-[2rem]"></div>--}}
+{{--            </div>--}}
         </div>
         <section class="container mx-auto px-6">
             <div class="text-center mb-16">
