@@ -1,5 +1,4 @@
-<x-layouts.frontend
-    title="Ridgeback Network Defense - Continuous Monitoring for FTC Safeguards Rule Compliance | ARMP"
+<x-layouts.frontend title="Ridgeback Network Defense - Continuous Monitoring for FTC Safeguards Rule Compliance | ARMP"
     description="Ridgeback Network Defense provides 24/7/365 continuous monitoring of dealership technical infrastructure. Purpose-built appliance for vulnerability scanning,
   penetration testing, dark web monitoring, and FTC Safeguards Rule compliance without disrupting operations."
     keywords="Ridgeback Network Defense, FTC Safeguards Rule continuous monitoring, dealership cyber security, vulnerability scanning, penetration testing automotive, dark web
@@ -11,8 +10,7 @@
     twitterTitle="Ridgeback Network Defense - Complete Visibility. Total Control."
     twitterDescription="24/7/365 continuous monitoring for automotive dealerships. Real-time scanning, automated reporting, and compliance made simple with Ridgeback Network
   Defense."
-    canonicalUrl="{{ route('security') }}"
->
+    canonicalUrl="{{ route('security') }}">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div
@@ -76,59 +74,14 @@
                     </div>
                 </div>
             </div>
-            <div class="relative">
-                <div
-                    class="relative z-10 bg-[#0f172a] border border-white/10 rounded-2xl p-1 shadow-2xl transform rotate-1 hover:rotate-0 transition-all duration-500">
-                    <div
-                        class="bg-[#020617] rounded-xl overflow-hidden border border-white/5 relative aspect-square flex items-center justify-center">
-                        <div
-                            class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(3,100,130,0.1)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[background-position_0s_ease-in-out_infinite]">
-                        </div>
-                        <div
-                            class="relative z-10 w-48 h-48 rounded-full border-4 border-[#1e293b] flex items-center justify-center bg-[#0f172a] shadow-[0_0_50px_rgba(3,100,130,0.3)]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-server w-20 h-20 text-[#036482]"
-                                aria-hidden="true">
-                                <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
-                                <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
-                                <line x1="6" x2="6.01" y1="6" y2="6"></line>
-                                <line x1="6" x2="6.01" y1="18" y2="18"></line>
-                            </svg>
-                            <div class="absolute inset-0 animate-spin-slow">
-                                <div
-                                    class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#EC7700] rounded-full blur-[2px]">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute inset-0 opacity-20"><svg class="w-full h-full" viewBox="0 0 100 100">
-                                <line x1="50" y1="50" x2="20" y2="20" stroke="white"
-                                    stroke-width="0.5"></line>
-                                <line x1="50" y1="50" x2="80" y2="20" stroke="white"
-                                    stroke-width="0.5"></line>
-                                <line x1="50" y1="50" x2="20" y2="80" stroke="white"
-                                    stroke-width="0.5"></line>
-                                <line x1="50" y1="50" x2="80" y2="80" stroke="white"
-                                    stroke-width="0.5"></line>
-                                <circle cx="20" cy="20" r="2" fill="#036482"></circle>
-                                <circle cx="80" cy="20" r="2" fill="#036482"></circle>
-                                <circle cx="20" cy="80" r="2" fill="#EC7700"></circle>
-                                <circle cx="80" cy="80" r="2" fill="#EC7700"></circle>
-                            </svg></div>
-                    </div>
-                </div>
-                <div
-                    class="absolute -inset-4 bg-gradient-to-tr from-[#036482] to-[#EC7700] rounded-3xl opacity-20 blur-2xl -z-10">
-                </div>
-            </div>
+            <x-ridgeback-screen />
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
                 class="glass-panel p-8 rounded-xl hover:shadow-lg hover:shadow-[#036482]/10 transition-all bg-[#0f172a]/50 border-white/5 group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-wifi w-10 h-10 text-[#036482] mb-4 group-hover:scale-110 transition-transform"
                     aria-hidden="true">
                     <path d="M12 20h.01"></path>
@@ -142,9 +95,8 @@
             </div>
             <div
                 class="glass-panel p-8 rounded-xl hover:shadow-lg hover:shadow-[#036482]/10 transition-all bg-[#0f172a]/50 border-white/5 group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-lock w-10 h-10 text-[#036482] mb-4 group-hover:scale-110 transition-transform"
                     aria-hidden="true">
                     <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
@@ -156,9 +108,8 @@
             </div>
             <div
                 class="glass-panel p-8 rounded-xl hover:shadow-lg hover:shadow-[#036482]/10 transition-all bg-[#0f172a]/50 border-white/5 group">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-eye w-10 h-10 text-[#036482] mb-4 group-hover:scale-110 transition-transform"
                     aria-hidden="true">
                     <path
