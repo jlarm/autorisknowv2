@@ -1,5 +1,4 @@
-<x-layouts.frontend
-    title="ARMP - Automotive Risk Management Partners | Dealership Compliance & Cyber Security Solutions"
+<x-layouts.frontend title="ARMP - Automotive Risk Management Partners | Dealership Compliance & Cyber Security Solutions"
     description="Take control of your dealership compliance with ARMP. We provide comprehensive automotive risk management solutions: FTC Safeguards Rule compliance, OSHA/EPA
   audits, cyber security, F&I compliance, and physical risk management. One trusted partner for all your dealership compliance needs."
     keywords="automotive risk management, dealership compliance, ARMP, FTC Safeguards Rule, OSHA compliance automotive, EPA dealership compliance, automotive cyber security, F&I
@@ -7,11 +6,9 @@
     ogTitle="ARMP - Take Control of Your Dealership Compliance"
     ogDescription="Seamless, secure dealership risk management. Instant audits, optimized processes, and premium security design. Manage OSHA, EPA, FTC, OFAC, Cyber, and
   Physical compliance on one platform."
-    ogImage="{{ asset('armp-homepage.webp') }}"
-    twitterTitle="ARMP - Automotive Risk Management Partners"
+    ogImage="{{ asset('armp-homepage.webp') }}" twitterTitle="ARMP - Automotive Risk Management Partners"
     twitterDescription="All compliance, one platform. Manage your dealership's OSHA, EPA, FTC, cyber security, and physical risks with instant audits and real-time monitoring."
-    canonicalUrl="{{ url('/') }}"
->
+    canonicalUrl="{{ url('/') }}">
     <div class="space-y-32">
         <div class="container mx-auto text-center max-w-5xl relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">Take Control of

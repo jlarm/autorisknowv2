@@ -1,5 +1,4 @@
-<x-layouts.frontend
-    title="Compliance Packages - Choose Your Level of Protection | ARMP"
+<x-layouts.frontend title="Compliance Packages - Choose Your Level of Protection | ARMP"
     description="ARMP offers two comprehensive compliance packages for automotive dealerships: Sales F&I and OSHA (basic audits) or Compliance Solved (full protection with
   365-day testing, continuous penetration testing, dark web scanning). Optional EDR & SIEM SOC add-on available."
     keywords="dealership compliance packages, automotive risk management pricing, FTC Safeguards Rule packages, OSHA compliance audit, F&I compliance audit, continuous
@@ -11,8 +10,7 @@
     twitterTitle="ARMP Compliance Packages - Flexible Protection Options"
     twitterDescription="Choose between Sales F&I and OSHA audits or comprehensive Compliance Solved package with continuous testing, dark web scanning, and 24/7 monitoring.
   Add-on EDR & SIEM SOC service available."
-    canonicalUrl="{{ route('packages') }}"
->
+    canonicalUrl="{{ route('packages') }}">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div

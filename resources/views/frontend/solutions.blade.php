@@ -1,5 +1,4 @@
-<x-layouts.frontend
-    title="Solutions - Comprehensive Compliance Services for Automotive Dealerships | ARMP"
+<x-layouts.frontend title="Solutions - Comprehensive Compliance Services for Automotive Dealerships | ARMP"
     description="ARMP provides comprehensive risk assessment and compliance solutions for automotive dealerships: FTC Safeguards Rule cyber security, OSHA/EPA physical risk
   management, HR compliance, and F&I auditing. 100+ online training courses available."
     keywords="FTC Safeguards Rule, automotive cyber security, OSHA compliance dealerships, EPA compliance, dealership risk assessment, F&I compliance, Red Flags Rule, automotive
@@ -7,11 +6,9 @@
     ogTitle="Solutions - Comprehensive Compliance Services for Automotive Dealerships"
     ogDescription="ARMP offers comprehensive solutions for automotive dealerships: cyber security monitoring, OSHA/EPA compliance, HR management, F&I auditing, and 100+ online
   training courses to satisfy Safeguard rule requirements."
-    ogImage="{{ asset('solutions-preview.webp') }}"
-    twitterTitle="ARMP Solutions - Complete Dealership Compliance"
+    ogImage="{{ asset('solutions-preview.webp') }}" twitterTitle="ARMP Solutions - Complete Dealership Compliance"
     twitterDescription="Technical infrastructure, physical risk management, HR compliance, and F&I auditing all from one trusted partner. 100+ training courses included."
-    canonicalUrl="{{ route('solutions') }}"
->
+    canonicalUrl="{{ route('solutions') }}">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div

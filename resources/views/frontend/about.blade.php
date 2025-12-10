@@ -1,5 +1,4 @@
-<x-layouts.frontend
-    title="About ARMP - One Partner, One Solution for Automotive Compliance"
+<x-layouts.frontend title="About ARMP - One Partner, One Solution for Automotive Compliance"
     description="Automotive Risk Management Partners provides comprehensive compliance solutions for automotive dealerships. One trusted partner for cyber security, physical
   risk, OSHA/EPA, and finance auditing with 40+ years of industry experience."
     keywords="automotive risk management, dealership compliance, GLBA auditing, cyber security for dealerships, OSHA EPA compliance, automotive physical risk, dealership risk
@@ -7,11 +6,9 @@
     ogTitle="About ARMP - One Partner, One Solution for Automotive Compliance"
     ogDescription="Simplify compliance with a unified solution that meets all Safeguard rule requirements through a single trusted partner. 40+ years of automotive industry
   experience."
-    ogImage="{{ asset('teamwork.webp') }}"
-    twitterTitle="About ARMP - One Partner, One Solution"
+    ogImage="{{ asset('teamwork.webp') }}" twitterTitle="About ARMP - One Partner, One Solution"
     twitterDescription="Automotive Risk Management Partners: One source for all compliance risks associated with running a franchise automotive dealership."
-    canonicalUrl="{{ route('about') }}"
->
+    canonicalUrl="{{ route('about') }}">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div

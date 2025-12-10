@@ -116,7 +116,8 @@ new class extends Component {
                 </flux:field>
                 <div class="flex gap-2">
                     <flux:button type="submit" variant="primary" class="w-full">Update</flux:button>
-                    <flux:button href="{{ route('news.show', $form->post) }}" target="_blank" class="w-full">View</flux:button>
+                    <flux:button href="{{ route('news.show', $form->post) }}" target="_blank" class="w-full">View
+                    </flux:button>
                 </div>
             </flux:card>
         </div>

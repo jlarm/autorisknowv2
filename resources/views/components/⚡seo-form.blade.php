@@ -200,17 +200,16 @@ new class extends Component {
     <flux:field>
         <div class="flex items-center justify-between">
             <flux:label>SEO Title</flux:label>
-            <x-ai-button wire:click="generateSeoTitle" wire:loading.attr="disabled"
-                         wire:target="generateSeoTitle" loadingText="Generating...">
+            <x-ai-button wire:click="generateSeoTitle" wire:loading.attr="disabled" wire:target="generateSeoTitle"
+                loadingText="Generating...">
                 Generate SEO Title
             </x-ai-button>
         </div>
-        <flux:input wire:model.blur="metaTitle" type="text"
-                    placeholder="Enter SEO title (50-60 characters)" />
+        <flux:input wire:model.blur="metaTitle" type="text" placeholder="Enter SEO title (50-60 characters)" />
         <flux:error name="metaTitle" />
         @if ($metaTitle)
             <flux:text size="sm"
-                       class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                class="{{ strlen($metaTitle) > 60 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                 {{ strlen($metaTitle) }} characters
             </flux:text>
         @endif
@@ -221,9 +220,9 @@ new class extends Component {
             <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
             @foreach ($titleSuggestions as $suggestion)
                 <div wire:click="useTitleSuggestion('{{ addslashes($suggestion) }}')"
-                     class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                    <flux:text size="sm">{{ $suggestion }} <span
-                            class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                    class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                    <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }}
+                            chars)</span></flux:text>
                 </div>
             @endforeach
         </div>
@@ -234,17 +233,17 @@ new class extends Component {
             <flux:label>Meta Description</flux:label>
             @if ($contentField)
                 <x-ai-button wire:click="generateMetaDescription" wire:loading.attr="disabled"
-                             wire:target="generateMetaDescription" loadingText="Generating...">
+                    wire:target="generateMetaDescription" loadingText="Generating...">
                     Generate Meta Description
                 </x-ai-button>
             @endif
         </div>
-        <flux:textarea wire:model.blur="metaDescription"
-                       placeholder="Enter meta description (150-160 characters)" rows="3" />
+        <flux:textarea wire:model.blur="metaDescription" placeholder="Enter meta description (150-160 characters)"
+            rows="3" />
         <flux:error name="metaDescription" />
         @if ($metaDescription)
             <flux:text size="sm"
-                       class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
+                class="{{ strlen($metaDescription) > 160 ? 'text-red-600 dark:text-red-400' : 'text-gray-600 dark:text-gray-400' }}">
                 {{ strlen($metaDescription) }} characters
             </flux:text>
         @endif
@@ -255,9 +254,9 @@ new class extends Component {
             <flux:text size="sm" class="font-medium">Alternative Suggestions:</flux:text>
             @foreach ($descriptionSuggestions as $suggestion)
                 <div wire:click="useDescriptionSuggestion('{{ addslashes($suggestion) }}')"
-                     class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
-                    <flux:text size="sm">{{ $suggestion }} <span
-                            class="text-gray-500">({{ strlen($suggestion) }} chars)</span></flux:text>
+                    class="cursor-pointer rounded-lg border border-gray-200 p-3 hover:border-blue-500 hover:bg-blue-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:bg-blue-900/20">
+                    <flux:text size="sm">{{ $suggestion }} <span class="text-gray-500">({{ strlen($suggestion) }}
+                            chars)</span></flux:text>
                 </div>
             @endforeach
         </div>
@@ -270,7 +269,7 @@ new class extends Component {
 
         <div class="flex gap-2 mt-2">
             <flux:input wire:model="newKeyword" wire:keydown.enter.prevent="addNewKeyword" type="text"
-                        placeholder="Type a keyword and press Enter" class="flex-1" />
+                placeholder="Type a keyword and press Enter" class="flex-1" />
             <flux:button type="button" wire:click="addNewKeyword" variant="primary">
                 Add
             </flux:button>
@@ -282,7 +281,7 @@ new class extends Component {
                     <flux:badge variant="outline" class="group">
                         {{ $keyword }}
                         <button type="button" wire:click="removeKeyword({{ $index }})"
-                                class="ml-1 text-gray-500 hover:text-red-600">
+                            class="ml-1 text-gray-500 hover:text-red-600">
                             ×
                         </button>
                     </flux:badge>

@@ -39,10 +39,8 @@ $nextTick(() => { ready = true });">
                     class="{{ request()->routeIs('contact') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Contact</a>
             </nav>
 
-            <button @click="mobileMenuOpen = !mobileMenuOpen"
-                :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
-                aria-expanded="false"
-                x-bind:aria-expanded="mobileMenuOpen.toString()"
+            <button @click="mobileMenuOpen = !mobileMenuOpen" :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
+                aria-expanded="false" x-bind:aria-expanded="mobileMenuOpen.toString()"
                 class="lg:hidden text-slate-300 hover:text-white transition-colors">
                 <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

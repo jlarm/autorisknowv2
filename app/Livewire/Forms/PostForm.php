@@ -7,6 +7,7 @@ namespace App\Livewire\Forms;
 use App\Enums\Status;
 use App\Enums\Visibility;
 use App\Models\Post;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use Livewire\Attributes\Validate;
@@ -57,7 +58,7 @@ final class PostForm extends Form
             ],
             'featuredImage' => [
                 'nullable',
-                function ($attribute, $value, $fail) {
+                function ($attribute, $value, $fail): void {
                     if ($value === null) {
                         return;
                     }
@@ -66,7 +67,7 @@ final class PostForm extends Form
                         return;
                     }
 
-                    if (! $value instanceof \Illuminate\Http\UploadedFile) {
+                    if (! $value instanceof UploadedFile) {
                         $fail('The featured image must be a valid file.');
 
                         return;

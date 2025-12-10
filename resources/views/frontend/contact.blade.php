@@ -1,16 +1,13 @@
-<x-layouts.frontend
-    title="Contact ARMP - Get Your Free Dealership Risk Assessment | Crystal Lake, IL"
+<x-layouts.frontend title="Contact ARMP - Get Your Free Dealership Risk Assessment | Crystal Lake, IL"
     description="Contact Automotive Risk Management Partners for a free consultation. Call (815) 345-3629 or email info@autorisknow.com. Located in Crystal Lake, IL. Get expert
   guidance on FTC Safeguards Rule, OSHA compliance, and dealership risk management."
     keywords="contact ARMP, dealership consultation, automotive risk assessment, Crystal Lake IL, free compliance consultation, FTC Safeguards help, OSHA compliance assistance,
   dealership security consultation"
     ogTitle="Contact ARMP - Free Consultation for Automotive Dealerships"
     ogDescription="Get in touch with ARMP for expert dealership compliance guidance. Call (815) 345-3629 or email info@autorisknow.com. Located in Crystal Lake, IL."
-    ogImage="{{ asset('contact-armp.webp') }}"
-    twitterTitle="Contact ARMP - (815) 345-3629"
+    ogImage="{{ asset('contact-armp.webp') }}" twitterTitle="Contact ARMP - (815) 345-3629"
     twitterDescription="Get expert guidance on dealership compliance, cyber security, and risk management. Free consultation available. Crystal Lake, IL."
-    canonicalUrl="{{ route('contact') }}"
->
+    canonicalUrl="{{ route('contact') }}">
     <div class="container mx-auto px-6 space-y-24">
         <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
             <div
@@ -20,7 +17,8 @@
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                 Contact Us
             </h1>
-            <p class="text-xl text-slate-400 leadCan you ing-relaxed mb-8">Get in touch with us today and let us help you
+            <p class="text-xl text-slate-400 leadCan you ing-relaxed mb-8">Get in touch with us today and let us help
+                you
                 with all your inquiries and concerns</p>
         </section>
 
