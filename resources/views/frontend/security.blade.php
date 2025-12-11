@@ -69,6 +69,10 @@
             <x-ridgeback-screen />
         </div>
 
+        <x-defense-table />
+
+        <x-security-for />
+
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div
                 class="glass-panel p-8 rounded-xl hover:shadow-lg hover:shadow-[#036482]/10 transition-all bg-[#0f172a]/50 border-white/5 group">
