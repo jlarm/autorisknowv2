@@ -21,11 +21,11 @@
                 const sequence = [
                     { t: 'Establishing Encrypted Tunnel...', p: 20, d: 800 },
                     { t: 'Verifying Dealer Credentials...', p: 45, d: 1800 },
-                    { t: 'Retrieving Training Modules...', p: 70, d: 2800 },
+                    { t: 'Retrieving F&I Modules...', p: 70, d: 2800 },
                     { t: 'Decrypting Content Streams...', p: 90, d: 3800 },
                     { t: 'Access Granted.', p: 100, d: 4500 },
                 ];
-        
+
                 sequence.forEach(({ t, p, d }) => {
                     const timeoutId = setTimeout(() => {
                         if (!this.isComplete) {
