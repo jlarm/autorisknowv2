@@ -28,7 +28,16 @@
                         <path d="m12 5 7 7-7 7"></path>
                     </svg></a>
             </div>
-            <x-ridgeback-screen />
+            <div class="relative z-10 bg-[#020617] border border-white/10 rounded-2xl p-2 shadow-2xl overflow-hidden group">
+                <div class="absolute top-0 left-0 right-0 h-8 bg-[#0f172a] border-b border-white/10 flex items-center px-3 gap-2 z-20"></div>
+                <div class="absolute top-0 left-0 right-0 h-8 bg-[#0f172a] border-b border-white/10 flex items-center px-3 gap-2 z-20">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                </div>
+                <x-ridgeback-slideshow />
+            </div>
+{{--            <x-ridgeback-screen />--}}
 {{--            <div class="relative max-w-5xl mx-auto perspective-1000">--}}
 {{--                <div--}}
 {{--                    class="relative rounded-xl bg-[#0f172a]/80 border border-white/10 shadow-2xl overflow-hidden backdrop-blur-sm group transform transition-transform duration-500 hover:scale-[1.01]">--}}
