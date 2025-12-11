@@ -25,7 +25,7 @@
                     { t: 'Decrypting Content Streams...', p: 90, d: 3800 },
                     { t: 'Access Granted.', p: 100, d: 4500 },
                 ];
-
+        
                 sequence.forEach(({ t, p, d }) => {
                     const timeoutId = setTimeout(() => {
                         if (!this.isComplete) {
@@ -120,21 +120,12 @@
             {{-- First Video --}}
             <div class="relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <div style="padding:56.25% 0 0 0;position:relative;">
-                    {{-- Loader --}}
-                    <div id="video-loader-1" class="absolute inset-0 flex items-center justify-center z-10">
-                        <div class="flex flex-col items-center gap-4">
-                            <flux:icon.arrow-path class="size-12 text-zinc-400 dark:text-zinc-500 animate-spin" />
-                            <p class="text-sm text-zinc-600 dark:text-zinc-400">Loading video...</p>
-                        </div>
-                    </div>
-
-                    {{-- Video --}}
                     <iframe id="video-1"
                         src="https://player.vimeo.com/video/1144534636?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.3s ease-in-out;"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
                         title="Higher F&amp;I Profits Immediately"></iframe>
                 </div>
             </div>
@@ -142,21 +133,12 @@
             {{-- Second Video --}}
             <div class="relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <div style="padding:56.25% 0 0 0;position:relative;">
-                    {{-- Loader --}}
-                    <div id="video-loader-2" class="absolute inset-0 flex items-center justify-center z-10">
-                        <div class="flex flex-col items-center gap-4">
-                            <flux:icon.arrow-path class="size-12 text-zinc-400 dark:text-zinc-500 animate-spin" />
-                            <p class="text-sm text-zinc-600 dark:text-zinc-400">Loading video...</p>
-                        </div>
-                    </div>
-
-                    {{-- Video --}}
                     <iframe id="video-2"
                         src="https://player.vimeo.com/video/1144535428?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 0.3s ease-in-out;"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
                         title="F-Network-Sales-Process-Video-8.1.24"></iframe>
                 </div>
             </div>
@@ -176,27 +158,19 @@
                 }
             }
 
-            function setupVideoLoader(videoId, loaderId) {
+            function setupVideoLoader(videoId) {
                 const iframe = document.getElementById(videoId);
-                const loader = document.getElementById(loaderId);
 
-                if (!iframe || !loader) return;
+                if (!iframe) return;
 
                 const player = new Vimeo.Player(iframe);
 
                 player.ready().then(function() {
-                    // Hide loader
-                    loader.style.display = 'none';
-                    // Show video with fade in
-                    iframe.style.opacity = '1';
                     // Mark video as loaded
                     videosLoaded[videoId] = true;
                     checkAllVideosLoaded();
                 }).catch(function(error) {
                     console.error('Error loading video:', error);
-                    // Hide loader even on error
-                    loader.style.display = 'none';
-                    iframe.style.opacity = '1';
                     // Mark as loaded even on error so loading screen doesn't hang
                     videosLoaded[videoId] = true;
                     checkAllVideosLoaded();
@@ -209,8 +183,8 @@
                     'video-1': false,
                     'video-2': false
                 };
-                setupVideoLoader('video-1', 'video-loader-1');
-                setupVideoLoader('video-2', 'video-loader-2');
+                setupVideoLoader('video-1');
+                setupVideoLoader('video-2');
             }
 
             // Handle both initial page load and Livewire navigation
