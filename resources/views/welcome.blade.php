@@ -11,9 +11,10 @@
     canonicalUrl="{{ url('/') }}">
     <div class="space-y-32">
         <div class="container mx-auto text-center max-w-5xl relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">Take Control of
-                <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">Your Dealership
-                    Compliance</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">Control Your
+                Compliance
+                <br><span class="text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">and Cyber
+                    Security Destiny</span>
             </h1>
             <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">ARMP offers a seamless, secure
                 experience for managing your dealership risks. Instant audits, optimized processes, and premium security
@@ -45,7 +46,7 @@
         <section class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-white mb-4">Why Choose ARMP?</h2>
-                <p class="text-slate-400">Benefits designed to provide a seamless, secure experience.</p>
+                <p class="text-slate-400">All Compliance, One Platform</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div
