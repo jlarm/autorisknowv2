@@ -10,18 +10,8 @@
     twitterDescription="Automotive Risk Management Partners: One source for all compliance risks associated with running a franchise automotive dealership."
     canonicalUrl="{{ route('about') }}">
     <div class="container mx-auto px-6 space-y-24">
-        <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
-            <div
-                class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#036482]/10 border border-[#036482]/20 text-[#036482] text-xs font-bold uppercase tracking-wider mx-auto w-fit whitespace-nowrap">
-                The Risk Partners You Can Trust
-            </div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                One Partner, One Solution
-            </h1>
-            <p class="text-xl text-slate-400 leadCan you ing-relaxed mb-8">Simplify compliance with a unified solution
-                that meets all Safeguard rule requirements through a single trusted
-                partner.</p>
-        </section>
+        <x-page-title-section title="One Partner, One Solution"
+            subTitle="Simplify compliance with a unified solution that meets all Safeguard rule requirements through a single trusted partner." />
 
         <section class="relative glass-panel rounded-2xl p-10 md:p-16 border-white/10 bg-[#0f172a]/40 overflow-hidden">
             <div

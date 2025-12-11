@@ -9,15 +9,7 @@
     twitterDescription="Discover ARMP's proven strategies to increase your dealership's F&I profits while maintaining full compliance with regulations."
     canonicalUrl="{{ route('fi') }}">
     <div class="container mx-auto px-6 space-y-24">
-        <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
-            <div
-                class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#036482]/10 border border-[#036482]/20 text-[#036482] text-xs font-bold uppercase tracking-wider mx-auto w-fit whitespace-nowrap">
-                The Risk Partners You Can Trust
-            </div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Higher F&I Profits, Immediately
-            </h1>
-        </section>
+        <x-page-title-section title="Higher F&I Profits, Immediately" />
 
         <div class="space-y-8">
             <div style="padding:56.25% 0 0 0;position:relative;" class="rounded-xl overflow-hidden"><iframe

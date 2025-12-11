@@ -10,19 +10,11 @@
     twitterDescription="Technical infrastructure, physical risk management, HR compliance, and F&I auditing all from one trusted partner. 100+ training courses included."
     canonicalUrl="{{ route('solutions') }}">
     <div class="container mx-auto px-6 space-y-24">
-        <section class="max-w-4xl mx-auto text-center pt-12 space-y-8">
-            <div
-                class="flex items-center gap-2 px-4 py-2 rounded-full bg-[#036482]/10 border border-[#036482]/20 text-[#036482] text-xs font-bold uppercase tracking-wider mx-auto w-fit whitespace-nowrap">
-                The Risk Partners You Can Trust
-            </div>
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Satisfy your Safeguard rule requirements
-            </h1>
-            <p class="text-xl text-slate-400 leading-relaxed mb-8">ARMP will be your third-party partner that will
+        <x-page-title-section title="Satisfy your Safeguard rule requirements"
+            subTitle="ARMP will be your third-party partner that will
                 provide the dealer with a comprehensive Risk assessment and set of tools allowing the dealer to mitigate
                 any and all risks associated with the management of the Dealership allowing for sound risk reward
-                business decisions.</p>
-        </section>
+                business decisions." />
 
         <div class="grid lg:grid-cols-2 gap-8">
             <div class="glass-panel p-8 rounded-2xl border-white/5 bg-[#0f172a]/40 relative overflow-hidden group">
