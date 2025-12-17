@@ -27,7 +27,7 @@
                     { t: 'Loading Video Library...', p: 90, d: 3800 },
                     { t: 'Access Granted.', p: 100, d: 4500 },
                 ];
-        
+
                 sequence.forEach(({ t, p, d }) => {
                     const timeoutId = setTimeout(() => {
                         if (!this.isComplete) {
