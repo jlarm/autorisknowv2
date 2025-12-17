@@ -15,7 +15,7 @@ use Laravel\Fortify\Features;
 Route::get('/', fn (): Factory|View => view('welcome'))->name('front');
 Route::get('news/{post:slug}', [PostController::class, 'show'])->name('news.show');
 Route::view('about', 'frontend.about')->name('about');
-Route::view('solutions', 'frontend.solutions')->name('solutions');
+//Route::view('solutions', 'frontend.solutions')->name('solutions');
 Route::view('security', 'frontend.security')->name('security');
 Route::view('packages', 'frontend.packages')->name('packages');
 Route::view('f-and-i', 'frontend.fi')->name('fi');

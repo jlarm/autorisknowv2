@@ -17,10 +17,6 @@
                             class="hover:text-[#EC7700] transition-colors">About</a>
                     </li>
                     <li>
-                        <a href="{{ route('solutions') }}" wire:navigate
-                            class="hover:text-[#EC7700] transition-colors">Solutions</a>
-                    </li>
-                    <li>
                         <a href="{{ route('security') }}" wire:navigate
                             class="hover:text-[#EC7700] transition-colors">Security</a>
                     </li>
@@ -28,14 +24,14 @@
                         <a href="{{ route('packages') }}" wire:navigate
                             class="hover:text-[#EC7700] transition-colors">Packages</a>
                     </li>
+                    <li>
+                        <a href="{{ route('fi') }}" wire:navigate to="/about"
+                           class="hover:text-[#EC7700] transition-colors">F&I</a>
+                    </li>
                 </ul>
             </div>
             <div>
                 <ul class="space-y-2 text-sm text-slate-500">
-                    <li>
-                        <a href="{{ route('fi') }}" wire:navigate to="/about"
-                            class="hover:text-[#EC7700] transition-colors">F&I</a>
-                    </li>
                     <li>
                         <a href="{{ route('videos') }}" wire:navigate to="/news"
                             class="hover:text-[#EC7700] transition-colors">Videos</a>
