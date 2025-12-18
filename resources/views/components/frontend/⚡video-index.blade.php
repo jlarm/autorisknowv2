@@ -60,7 +60,7 @@ new class extends Component
                             }
 
                             const deltaTime = time - this.lastTime;
-                            const scrollSpeed = 0.03; // pixels per millisecond
+                            const scrollSpeed = 0.05; // pixels per millisecond
 
                             this.$refs.scrollContainer.scrollTop += scrollSpeed * deltaTime;
 
