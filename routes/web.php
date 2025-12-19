@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
 Route::get('/', fn (): Factory|View => view('welcome'))->name('front');
+
+// Redirect old date-based URLs to new /news/ structure
+Route::get('{year}/{month}/{day}/{slug}', fn (string $year, string $month, string $day, string $slug) => redirect()->to("/news/{$slug}", 301))->where([
+    'year' => '[0-9]{4}',
+    'month' => '[0-9]{2}',
+    'day' => '[0-9]{2}',
+]);
+
 Route::get('news/{post:slug}', [PostController::class, 'show'])->name('news.show');
 Route::view('about', 'frontend.about')->name('about');
 // Route::view('solutions', 'frontend.solutions')->name('solutions');

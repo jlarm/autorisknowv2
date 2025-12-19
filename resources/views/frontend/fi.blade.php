@@ -15,7 +15,8 @@
             {{-- First Video --}}
             <div class="relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1144534636?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    <iframe
+                        src="https://player.vimeo.com/video/1144534636?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
@@ -27,7 +28,8 @@
             {{-- Second Video --}}
             <div class="relative rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800">
                 <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1144535428?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                    <iframe
+                        src="https://player.vimeo.com/video/1144535428?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                         frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
