@@ -26,7 +26,7 @@
                     </li>
                     <li>
                         <a href="{{ route('fi') }}" wire:navigate to="/about"
-                           class="hover:text-[#EC7700] transition-colors">F&I</a>
+                            class="hover:text-[#EC7700] transition-colors">F&I</a>
                     </li>
                 </ul>
             </div>

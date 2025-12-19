@@ -8,7 +8,7 @@ use App\Models\Video;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class ImportVideosFromJson extends Command
+final class ImportVideosFromJson extends Command
 {
     /**
      * The name and signature of the console command.
@@ -89,7 +89,7 @@ class ImportVideosFromJson extends Command
         $progressBar->finish();
         $this->newLine(2);
 
-        $this->info("Import completed successfully!");
+        $this->info('Import completed successfully!');
         $this->info("Created: {$imported} videos");
         $this->info("Updated: {$updated} videos");
 

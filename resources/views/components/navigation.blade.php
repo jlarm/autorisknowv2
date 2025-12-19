@@ -24,7 +24,8 @@ $nextTick(() => { ready = true });">
                 <a wire:navigate href="{{ route('about') }}"
                     class="{{ request()->routeIs('about') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">About</a>
                 <a wire:navigate href="{{ route('security') }}"
-                    class="{{ request()->routeIs('security') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Cyber Security</a>
+                    class="{{ request()->routeIs('security') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Cyber
+                    Security</a>
                 <a wire:navigate href="{{ route('packages') }}"
                     class="{{ request()->routeIs('packages') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Packages</a>
                 <a wire:navigate href="{{ route('fi') }}"
