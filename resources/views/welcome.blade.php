@@ -19,16 +19,6 @@
             <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">ARMP offers a seamless, secure
                 experience for managing your dealership risks. Instant audits, optimized processes, and premium security
                 design.</p>
-            <div class="flex flex-col items-center gap-4 mb-16">
-                <a class="bg-[#036482] hover:bg-[#EC7700] text-white font-bold px-8 py-3 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-[#036482]/20 hover:shadow-[#EC7700]/20 flex items-center gap-2 border border-white/10"
-                    wire:navigate href="{{ route('contact') }}" data-discover="true">Get started now <svg
-                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4" aria-hidden="true">
-                        <path d="M5 12h14"></path>
-                        <path d="m12 5 7 7-7 7"></path>
-                    </svg></a>
-            </div>
             <div
                 class="relative z-10 bg-[#020617] border border-white/10 rounded-2xl p-2 shadow-2xl overflow-hidden group">
                 <div
@@ -142,8 +132,6 @@
                                 O</div>
                             <div>
                                 <div class="text-white text-sm font-bold">OSHA</div>
-                                <div class="text-[10px] text-green-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Active</div>
                             </div>
                         </div>
                         <div class="bg-[#1e293b] border border-white/5 p-4 rounded-lg flex flex-col gap-2 shadow-sm">
@@ -152,8 +140,6 @@
                                 E</div>
                             <div>
                                 <div class="text-white text-sm font-bold">EPA</div>
-                                <div class="text-[10px] text-yellow-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Pending</div>
                             </div>
                         </div>
                         <div class="bg-[#1e293b] border border-white/5 p-4 rounded-lg flex flex-col gap-2 shadow-sm">
@@ -162,8 +148,6 @@
                                 F</div>
                             <div>
                                 <div class="text-white text-sm font-bold">FTC</div>
-                                <div class="text-[10px] text-green-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Active</div>
                             </div>
                         </div>
                         <div class="bg-[#1e293b] border border-white/5 p-4 rounded-lg flex flex-col gap-2 shadow-sm">
@@ -172,8 +156,6 @@
                                 O</div>
                             <div>
                                 <div class="text-white text-sm font-bold">OFAC</div>
-                                <div class="text-[10px] text-red-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Review</div>
                             </div>
                         </div>
                         <div class="bg-[#1e293b] border border-white/5 p-4 rounded-lg flex flex-col gap-2 shadow-sm">
@@ -182,8 +164,6 @@
                                 C</div>
                             <div>
                                 <div class="text-white text-sm font-bold">Cyber</div>
-                                <div class="text-[10px] text-green-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Active</div>
                             </div>
                         </div>
                         <div class="bg-[#1e293b] border border-white/5 p-4 rounded-lg flex flex-col gap-2 shadow-sm">
@@ -192,8 +172,6 @@
                                 P</div>
                             <div>
                                 <div class="text-white text-sm font-bold">Physical</div>
-                                <div class="text-[10px] text-green-500 flex items-center gap-1 font-medium"><span
-                                        class="w-1 h-1 rounded-full bg-current"></span> Active</div>
                             </div>
                         </div>
                     </div>
