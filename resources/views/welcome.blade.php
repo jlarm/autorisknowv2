@@ -207,37 +207,108 @@
                     <p class="text-slate-400">Find everything you need to know about ARMP.</p>
                 </div>
             </div>
-            <div class="space-y-4">
-                <div class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm"><button
-                        class="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-white/5 transition-colors"><span
-                            class="text-slate-200 font-medium">What is ARMP?</span><svg
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 text-slate-600"
-                            aria-hidden="true">
+            <div x-data="{ activeItem: null }" class="space-y-4">
+
+                <div
+                    class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
+                    <button @click="activeItem = (activeItem === 1 ?null : 1)"
+                        class="w-full px-6 py-4 flex justify-between items-center text-left"><span
+                            class="text-slate-200 font-medium">What Is ARMP?</span>
+                        <svg x-cloak x-show="activeItem == 1" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-up w-4 h-4 text-[#EC7700]" aria-hidden="true">
+                            <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                        <svg x-show="activeItem !== 1" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-plus w-4 h-4 text-slate-600" aria-hidden="true">
                             <path d="M5 12h14"></path>
                             <path d="M12 5v14"></path>
-                        </svg></button></div>
-                <div class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm"><button
-                        class="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-white/5 transition-colors"><span
-                            class="text-slate-200 font-medium">How fast are audits?</span><svg
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 text-slate-600"
-                            aria-hidden="true">
+                        </svg>
+                    </button>
+                    <div x-cloak x-show="activeItem === 1"
+                        class="px-6 pb-4 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 bg-[#020617]/50">
+                        ARMP (Automotive Risk Management Partners, Inc.) is an all-in-one dealership risk
+                        management program designed to help auto (and RV) dealerships reduce
+                        operational/compliance risk—especially around FTC/GLBA Safeguards Rule
+                        requirements—by combining services like detailed compliance/risk assessments
+                        (audits), employee training, and cybersecurity/security monitoring and support through a
+                        single vendor.</div>
+                </div>
+
+                <div
+                    class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
+                    <button @click="activeItem = (activeItem === 2 ?null : 2)"
+                        class="w-full px-6 py-4 flex justify-between items-center text-left"><span
+                            class="text-slate-200 font-medium">How Fast is an Audit?</span>
+                        <svg x-cloak x-show="activeItem == 2" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-up w-4 h-4 text-[#EC7700]" aria-hidden="true">
+                            <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                        <svg x-show="activeItem !== 2" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-plus w-4 h-4 text-slate-600" aria-hidden="true">
                             <path d="M5 12h14"></path>
                             <path d="M12 5v14"></path>
-                        </svg></button></div>
-                <div class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm"><button
-                        class="w-full px-6 py-4 flex justify-between items-center text-left hover:bg-white/5 transition-colors"><span
-                            class="text-slate-200 font-medium">Which regulations are supported?</span><svg
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-plus w-4 h-4 text-slate-600"
-                            aria-hidden="true">
+                        </svg>
+                    </button>
+                    <div x-cloak x-show="activeItem === 2"
+                        class="px-6 pb-4 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 bg-[#020617]/50">
+                        Aside from the initial compliance assessment, which can take 1–2 days depending on
+                        the size of dealership, the ongoing review typically takes 4–6 hours when we schedule
+                        our post-install on-site visits throughout the year.</div>
+                </div>
+
+                <div
+                    class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
+                    <button @click="activeItem = (activeItem === 3 ?null : 3)"
+                        class="w-full px-6 py-4 flex justify-between items-center text-left">
+                        <span class="text-slate-200 font-medium">Which Regulations are Supported?</span>
+                        <svg x-cloak x-show="activeItem == 3" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-up w-4 h-4 text-[#EC7700]" aria-hidden="true">
+                            <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                        <svg x-show="activeItem !== 3" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-plus w-4 h-4 text-slate-600" aria-hidden="true">
                             <path d="M5 12h14"></path>
                             <path d="M12 5v14"></path>
-                        </svg></button></div>
+                        </svg>
+                    </button>
+                    <div x-cloak x-show="activeItem === 3"
+                        class="px-6 pb-4 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4 bg-[#020617]/50">
+                        Cybersecurity &amp; customer data protection
+                        <ul class="list-disc ml-6">
+                            <li>FTC Safeguards Rule Requirements</li>
+                            <li>GLBA (Gramm–Leach–Bliley Act)</li>
+                            <li>Information Security Program (ISP)</li>
+                            <li>OFAC &amp; Red Flag screening/compliance</li>
+                            <li>CFPB-oriented Compliance Management System (CMS) practices</li>
+                            <li>FTC CARS Rule</li>
+                            <li>Truth in Lending Act (TILA) / Regulation Z</li>
+                            <li>Sales/F&amp;I, advertising, and consumer-finance oversight topics</li>
+                            <li>Do Not Call + CAN-SPAM</li>
+                            <li>Workplace safety &amp; environmental compliance</li>
+                            <li>OSHA (OSHA packages/manuals + SDS access)</li>
+                            <li>EPA-related compliance</li>
+                            <li>SPCC (Spill Prevention, Control, and Countermeasure)</li>
+                            <li>Operations/training compliance</li>
+                            <li>DOT training/certifications</li>
+                            <li>Forklift safety certification</li>
+                            <li>EEOC policies and ADA, Title VII (as HR/employment compliance areas)</li>
+                            <li>Sexual harassment &amp; workplace discrimination training</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
