@@ -11,8 +11,6 @@
     canonicalUrl="{{ route('videos') }}">
     <div class="container mx-auto px-6 space-y-24">
         <x-page-title-section title="Videos" subTitle="Check out our videos below to learn more." />
-
-        {{-- Video Content --}}
         <div>
             <livewire:frontend.video-index lazy />
         </div>
