@@ -199,7 +199,7 @@
                 <div class="mb-6">
                     <h3 class="text-xl font-bold text-white mb-2 leading-tight">Total Defense Suite</h3>
                     <p class="text-xs font-semibold text-slate-400 uppercase tracking-tight min-h-[32px]">Complete
-                        Coverage: A + B + C</p>
+                        Coverage</p>
                 </div>
                 <div class="mb-6 pb-6 border-b border-white/5">
                     <p class="text-slate-400 text-xs italic leading-relaxed">Best for dealerships or dealer groups that
