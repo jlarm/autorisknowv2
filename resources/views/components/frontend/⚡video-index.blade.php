@@ -5,6 +5,8 @@ use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 new class extends Component {
+    public ?int $selectedVideoId = null;
+
     #[Computed]
     public function latestVideos()
     {
@@ -21,6 +23,27 @@ new class extends Component {
         return $this->getVideos()->latest()->skip(4)->take(1000)->get();
     }
 
+    #[Computed]
+    public function selectedVideo()
+    {
+        if ($this->selectedVideoId === null) {
+            return null;
+        }
+
+        return Video::find($this->selectedVideoId);
+    }
+
+    public function selectVideo(int $videoId): void
+    {
+        $this->selectedVideoId = $videoId;
+        $this->dispatch('open-video-modal');
+    }
+
+    public function clearSelection(): void
+    {
+        $this->selectedVideoId = null;
+    }
+
     private function getVideos()
     {
         return Video::query();
@@ -28,7 +51,7 @@ new class extends Component {
 };
 ?>
 
-<div>
+<div x-data="{ modalOpen: false }" @open-video-modal.window="modalOpen = true">
     <div class="flex flex-col lg:flex-row gap-8 items-start">
         <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
             @foreach ($this->latestVideos as $video)
@@ -94,6 +117,7 @@ new class extends Component {
                     @endphp
                     @foreach ($duplicatedVideos as $video)
                         <div wire:key="video-{{ $video->id }}-{{ $loop->index }}"
+                            wire:click="selectVideo({{ $video->id }})"
                             class="mb-3 p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-[#036482]/20 hover:border-[#036482]/40 transition-all cursor-pointer group/item flex items-center justify-between">
                             <div class="flex flex-col gap-1 overflow-hidden">
                                 <h4
@@ -113,4 +137,24 @@ new class extends Component {
             </div>
         </div>
     </div>
+
+    {{-- Modal Overlay --}}
+    <div x-show="modalOpen" x-cloak x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-40"
+        @click="modalOpen = false; $wire.clearSelection()"></div>
+
+    {{-- Video Modal --}}
+    <flux:modal name="video-modal" x-model="modalOpen"
+        class="min-w-[90vw] md:min-w-[80vw] lg:min-w-[70vw] !bg-[#0f172a] border border-white/10">
+        @if ($this->selectedVideo)
+            <div class="space-y-4">
+                <flux:heading size="lg" class="text-white">{{ $this->selectedVideo->title }}</flux:heading>
+                <div class="w-full">
+                    {!! $this->selectedVideo->styled_embed_code !!}
+                </div>
+            </div>
+        @endif
+    </flux:modal>
 </div>
