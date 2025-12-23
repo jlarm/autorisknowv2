@@ -66,6 +66,7 @@ final class FathomService
         $deviceTypes = $this->getDeviceTypes($dateFrom, $dateTo);
         $browsers = $this->getBrowsers($dateFrom, $dateTo);
         $countries = $this->getCountries($dateFrom, $dateTo);
+        $events = $this->getEvents($dateFrom, $dateTo);
 
         return [
             'pageviews' => (int) ($overallStats[0]['pageviews'] ?? 0),
@@ -80,6 +81,7 @@ final class FathomService
             'device_types' => $deviceTypes,
             'browsers' => $browsers,
             'countries' => $countries,
+            'events' => $events,
         ];
     }
 
@@ -228,6 +230,40 @@ final class FathomService
 
             if ($response->successful()) {
                 return $response->json() ?? [];
+            }
+
+            return [];
+        });
+    }
+
+    public function getEvents(string $dateFrom, string $dateTo, int $limit = 20): array
+    {
+        $cacheKey = "fathom_events_{$dateFrom}_{$dateTo}_{$limit}";
+
+        return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($dateFrom, $dateTo, $limit) {
+            $response = $this->client()->get('/aggregations', [
+                'entity' => 'event',
+                'entity_id' => $this->siteId,
+                'aggregates' => 'uniques,completions',
+                'date_from' => $dateFrom.' 00:00:00',
+                'date_to' => $dateTo.' 23:59:59',
+                'field_grouping' => 'event_name',
+                'sort_by' => 'completions:desc',
+                'limit' => $limit,
+                'timezone' => 'America/New_York',
+            ]);
+
+            if ($response->successful()) {
+                $events = $response->json() ?? [];
+
+                // Calculate conversion rate for each event
+                return array_map(function ($event) {
+                    $uniques = (int) ($event['uniques'] ?? 0);
+                    $completions = (int) ($event['completions'] ?? 0);
+                    $event['conversion_rate'] = $uniques > 0 ? round(($completions / $uniques) * 100, 1) : 0;
+
+                    return $event;
+                }, $events);
             }
 
             return [];

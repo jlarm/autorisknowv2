@@ -20,25 +20,33 @@ $nextTick(() => { ready = true });">
 
             <nav class="hidden lg:flex items-center gap-8">
                 <a wire:navigate href="{{ route('front') }}"
+                    onclick="fathom.trackEvent('nav home')"
                     class="{{ request()->routeIs('front') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Home</a>
                 <a wire:navigate href="{{ route('about') }}"
+                    onclick="fathom.trackEvent('nav about')"
                     class="{{ request()->routeIs('about') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">About</a>
                 <a wire:navigate href="{{ route('security') }}"
+                    onclick="fathom.trackEvent('nav security')"
                     class="{{ request()->routeIs('security') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Cyber
                     Security</a>
                 <a wire:navigate href="{{ route('packages') }}"
+                    onclick="fathom.trackEvent('nav packages')"
                     class="{{ request()->routeIs('packages') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Packages</a>
                 <a wire:navigate href="{{ route('fi') }}"
+                    onclick="fathom.trackEvent('nav fi')"
                     class="{{ request()->routeIs('fi') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">F&I</a>
                 <a wire:navigate href="{{ route('videos') }}"
+                    onclick="fathom.trackEvent('nav videos')"
                     class="{{ request()->routeIs('videos') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Videos</a>
                 <a wire:navigate href="{{ route('news.index') }}"
+                    onclick="fathom.trackEvent('nav news')"
                     class="{{ request()->routeIs('news.*') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">News</a>
                 <a wire:navigate href="{{ route('contact') }}"
+                    onclick="fathom.trackEvent('nav contact')"
                     class="{{ request()->routeIs('contact') ? 'text-[#EC7700]' : 'text-slate-400' }} text-sm font-medium hover:text-[#EC7700] transition-all duration-300 relative group px-1 py-1 ">Contact</a>
             </nav>
 
-            <button @click="mobileMenuOpen = !mobileMenuOpen" :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
+            <button @click="mobileMenuOpen = !mobileMenuOpen; if (!mobileMenuOpen) { fathom.trackEvent('mobile menu open') }" :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
                 aria-expanded="false" x-bind:aria-expanded="mobileMenuOpen.toString()"
                 class="lg:hidden text-slate-300 hover:text-white transition-colors">
                 <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -62,6 +70,7 @@ $nextTick(() => { ready = true });">
         class="fixed inset-0 z-30 bg-[#020617]/95 backdrop-blur-xl pt-24 px-6 lg:hidden">
         <nav class="flex flex-col gap-6 text-lg">
             <a wire:navigate href="{{ route('front') }}"
+                onclick="fathom.trackEvent('mobile nav home')"
                 class="{{ request()->routeIs('front') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Home
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -71,6 +80,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('about') }}"
+               onclick="fathom.trackEvent('mobile nav about')"
                class="{{ request()->routeIs('about') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 About
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -80,6 +90,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('security') }}"
+               onclick="fathom.trackEvent('mobile nav security')"
                class="{{ request()->routeIs('security') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Cyber Security
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -89,6 +100,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('packages') }}"
+               onclick="fathom.trackEvent('mobile nav packages')"
                class="{{ request()->routeIs('packages') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Packages
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -98,6 +110,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('fi') }}"
+               onclick="fathom.trackEvent('mobile nav fi')"
                class="{{ request()->routeIs('fi') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 F&I
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -107,6 +120,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('videos') }}"
+                onclick="fathom.trackEvent('mobile nav videos')"
                 class="{{ request()->routeIs('videos') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Videos
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -116,6 +130,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('news.index') }}"
+                onclick="fathom.trackEvent('mobile nav news')"
                 class="{{ request()->routeIs('news') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 News
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -125,6 +140,7 @@ $nextTick(() => { ready = true });">
                 </svg>
             </a>
             <a wire:navigate href="{{ route('contact') }}"
+               onclick="fathom.trackEvent('mobile nav contact')"
                class="{{ request()->routeIs('contact') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Contact
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"

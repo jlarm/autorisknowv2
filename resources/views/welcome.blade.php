@@ -117,7 +117,8 @@
                         <p class="text-slate-400 mb-8 leading-relaxed">Manage, track, and audit all compliance risks on
                             a single platform. A seamless experience with no compromises.</p><a
                             class="text-[#EC7700] font-semibold flex items-center gap-2 hover:gap-3 transition-all text-sm"
-                            wire:navigate href="{{ route('security') }}" data-discover="true">Explore platform <svg
+                            wire:navigate href="{{ route('security') }}" data-discover="true"
+                            onclick="fathom.trackEvent('explore platform click')">Explore platform <svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4" aria-hidden="true">
@@ -189,7 +190,7 @@
 
                 <div
                     class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
-                    <button @click="activeItem = (activeItem === 1 ?null : 1)"
+                    <button @click="activeItem = (activeItem === 1 ?null : 1); if (activeItem !== 1) { fathom.trackEvent('faq what is armp') }"
                         class="w-full px-6 py-4 flex justify-between items-center text-left"><span
                             class="text-slate-200 font-medium">What Is ARMP?</span>
                         <svg x-cloak x-show="activeItem == 1" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -218,7 +219,7 @@
 
                 <div
                     class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
-                    <button @click="activeItem = (activeItem === 2 ?null : 2)"
+                    <button @click="activeItem = (activeItem === 2 ?null : 2); if (activeItem !== 2) { fathom.trackEvent('faq audit speed') }"
                         class="w-full px-6 py-4 flex justify-between items-center text-left"><span
                             class="text-slate-200 font-medium">How Fast is an Audit?</span>
                         <svg x-cloak x-show="activeItem == 2" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -244,7 +245,7 @@
 
                 <div
                     class="border border-white/10 rounded-lg bg-[#0f172a] overflow-hidden shadow-sm hover:border-[#EC7700]/30 transition-colors">
-                    <button @click="activeItem = (activeItem === 3 ?null : 3)"
+                    <button @click="activeItem = (activeItem === 3 ?null : 3); if (activeItem !== 3) { fathom.trackEvent('faq regulations') }"
                         class="w-full px-6 py-4 flex justify-between items-center text-left">
                         <span class="text-slate-200 font-medium">Which Regulations are Supported?</span>
                         <svg x-cloak x-show="activeItem == 3" xmlns="http://www.w3.org/2000/svg" width="24"

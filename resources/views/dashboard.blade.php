@@ -14,6 +14,7 @@
                 device_types: [],
                 browsers: [],
                 countries: [],
+                events: [],
             },
             loading: true,
             error: false,
@@ -187,10 +188,59 @@
             </div>
         </flux:card>
 
+        {{-- Events Table --}}
+        <flux:card>
+            <flux:heading size="lg" class="mb-4">Events</flux:heading>
+
+            <flux:table>
+                <flux:table.columns>
+                    <flux:table.column>Event</flux:table.column>
+                    <flux:table.column class="text-right">Uniques</flux:table.column>
+                    <flux:table.column class="text-right">Completions</flux:table.column>
+                    <flux:table.column class="text-right">Conv. Rate</flux:table.column>
+                </flux:table.columns>
+
+                <flux:table.rows>
+                    <template x-if="loading">
+                        <flux:table.row>
+                            <flux:table.cell colspan="4">
+                                <div class="animate-pulse flex space-x-4">
+                                    <div class="flex-1 space-y-3 py-1">
+                                        <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded"></div>
+                                        <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded"></div>
+                                        <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded"></div>
+                                    </div>
+                                </div>
+                            </flux:table.cell>
+                        </flux:table.row>
+                    </template>
+
+                    <template x-for="event in stats.events" :key="event.event_name">
+                        <flux:table.row>
+                            <flux:table.cell>
+                                <span class="font-medium" x-text="event.event_name"></span>
+                            </flux:table.cell>
+                            <flux:table.cell class="text-right font-mono text-sm" x-text="formatNumber(event.uniques)"></flux:table.cell>
+                            <flux:table.cell class="text-right font-mono text-sm" x-text="formatNumber(event.completions)"></flux:table.cell>
+                            <flux:table.cell class="text-right font-mono text-sm" x-text="event.conversion_rate + '%'"></flux:table.cell>
+                        </flux:table.row>
+                    </template>
+
+                    <template x-if="!loading && stats.events.length === 0">
+                        <flux:table.row>
+                            <flux:table.cell colspan="4" class="text-center text-zinc-400">
+                                No event data available
+                            </flux:table.cell>
+                        </flux:table.row>
+                    </template>
+                </flux:table.rows>
+            </flux:table>
+        </flux:card>
+
         {{-- Tables --}}
-        <div class="grid lg:grid-cols-2 gap-6">
+        <div class="grid lg:grid-cols-6 gap-6">
             {{-- Top Pages --}}
-            <flux:card>
+            <flux:card class="col-span-4">
                 <flux:heading size="lg" class="mb-4">Pages</flux:heading>
 
                 <flux:table>
@@ -219,7 +269,7 @@
                         <template x-for="page in stats.top_pages" :key="page.pathname">
                             <flux:table.row>
                                 <flux:table.cell>
-                                    <span class="font-mono text-sm" x-text="page.pathname || '/'"></span>
+                                    <span class="font-mono text-sm truncate block max-w-md" x-text="page.pathname || '/'" :title="page.pathname || '/'"></span>
                                 </flux:table.cell>
                                 <flux:table.cell class="text-right font-mono text-sm" x-text="formatNumber(page.uniques)"></flux:table.cell>
                                 <flux:table.cell class="text-right font-mono text-sm" x-text="formatNumber(page.visits)"></flux:table.cell>
@@ -239,7 +289,7 @@
             </flux:card>
 
             {{-- Top Referrers --}}
-            <flux:card>
+            <flux:card class="col-span-2">
                 <flux:heading size="lg" class="mb-4">Referrers</flux:heading>
 
                 <flux:table>
