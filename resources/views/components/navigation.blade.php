@@ -70,6 +70,42 @@ $nextTick(() => { ready = true });">
                     <path d="m9 18 6-6-6-6" />
                 </svg>
             </a>
+            <a wire:navigate href="{{ route('about') }}"
+               class="{{ request()->routeIs('about') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+                About
+                <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
+            <a wire:navigate href="{{ route('security') }}"
+               class="{{ request()->routeIs('security') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+                Cyber Security
+                <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
+            <a wire:navigate href="{{ route('packages') }}"
+               class="{{ request()->routeIs('packages') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+                Packages
+                <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
+            <a wire:navigate href="{{ route('fi') }}"
+               class="{{ request()->routeIs('fi') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+                F&I
+                <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
             <a wire:navigate href="{{ route('videos') }}"
                 class="{{ request()->routeIs('videos') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
                 Videos
@@ -85,6 +121,15 @@ $nextTick(() => { ready = true });">
                 <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6" />
+                </svg>
+            </a>
+            <a wire:navigate href="{{ route('contact') }}"
+               class="{{ request()->routeIs('contact') ? 'text-cyan-400 font-semibold' : 'text-slate-400' }} border-b border-slate-800 pb-4 flex justify-between items-center">
+                Contact
+                <svg class="w-5 h-5 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                     stroke-linejoin="round">
                     <path d="m9 18 6-6-6-6" />
                 </svg>
             </a>
