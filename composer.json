@@ -13,7 +13,7 @@
         "anthropic-ai/sdk": "^0.3.0",
         "laravel/fortify": "^1.30",
         "laravel/framework": "^12.0",
-        "laravel/nightwatch": "^1.19",
+        "laravel/nightwatch": "^1.21",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
         "livewire/flux-pro": "^2.6",
