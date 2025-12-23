@@ -46,4 +46,9 @@ return [
         'creator' => env('TWITTER_CREATOR'),
     ],
 
+    'fathom' => [
+        'api_token' => env('FATHOM_API_TOKEN'),
+        'site_id' => env('FATHOM_SITE_ID', 'DOKFHMYT'),
+    ],
+
 ];

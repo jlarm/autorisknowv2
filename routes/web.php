@@ -7,6 +7,7 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Settings\TwoFactor;
+use App\Services\FathomService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,10 @@ Route::middleware(['auth', 'verified'])->group(function (): void {
 });
 
 Route::middleware(['auth'])->group(function (): void {
+    Route::get('/api/analytics/stats', function (FathomService $fathom) {
+        return response()->json($fathom->getStats());
+    })->name('analytics.stats');
+
     Route::redirect('settings', 'settings/profile');
 
     Route::get('settings/profile', Profile::class)->name('profile.edit');
