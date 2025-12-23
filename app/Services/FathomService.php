@@ -39,13 +39,13 @@ final class FathomService
 
     public function getCurrentVisitors(): int
     {
-        $result = Cache::remember('fathom_current_visitors', now()->addSeconds(30), function () {
+        $result = Cache::remember('fathom_current_visitors', now()->addMinutes(5), function () {
             $response = $this->client()->get('/current_visitors', [
                 'site_id' => $this->siteId,
             ]);
 
             if ($response->successful()) {
-                return $response->json('total', 0);
+                return (int) $response->json('total', 0);
             }
 
             return 0;
@@ -240,15 +240,15 @@ final class FathomService
     {
         $cacheKey = "fathom_events_{$dateFrom}_{$dateTo}_{$limit}";
 
-        return Cache::remember($cacheKey, now()->addMinutes(10), function () use ($dateFrom, $dateTo, $limit) {
+        return Cache::remember($cacheKey, now()->addMinutes(30), function () use ($dateFrom, $dateTo, $limit) {
             $response = $this->client()->get('/aggregations', [
                 'entity' => 'event',
                 'entity_id' => $this->siteId,
-                'aggregates' => 'uniques,completions',
+                'aggregates' => 'visits',
                 'date_from' => $dateFrom.' 00:00:00',
                 'date_to' => $dateTo.' 23:59:59',
-                'field_grouping' => 'event_name',
-                'sort_by' => 'completions:desc',
+                'field_grouping' => 'name',
+                'sort_by' => 'visits:desc',
                 'limit' => $limit,
                 'timezone' => 'America/New_York',
             ]);
@@ -256,13 +256,14 @@ final class FathomService
             if ($response->successful()) {
                 $events = $response->json() ?? [];
 
-                // Calculate conversion rate for each event
+                // Format events for display
                 return array_map(function ($event) {
-                    $uniques = (int) ($event['uniques'] ?? 0);
-                    $completions = (int) ($event['completions'] ?? 0);
-                    $event['conversion_rate'] = $uniques > 0 ? round(($completions / $uniques) * 100, 1) : 0;
-
-                    return $event;
+                    return [
+                        'event_name' => $event['name'] ?? 'Unknown',
+                        'uniques' => (int) ($event['uniques'] ?? 0),
+                        'completions' => (int) ($event['visits'] ?? 0),
+                        'conversion_rate' => 0, // Fathom calculates this differently for events
+                    ];
                 }, $events);
             }
 

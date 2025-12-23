@@ -28,7 +28,10 @@
                 <span x-text="$wire.message.length"></span>/500
             </div>
             <flux:error name="message" />
-        </div><button type="submit"
+        </div>
+        <x-turnstile wire:model="cfTurnstileResponse" />
+        <flux:error name="cfTurnstileResponse" />
+        <button type="submit"
             class="w-full bg-[#036482] hover:bg-[#EC7700] hover:cursor-pointer text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-[#EC7700]/20 flex items-center justify-center gap-2"><svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

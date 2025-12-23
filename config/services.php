@@ -51,4 +51,9 @@ return [
         'site_id' => env('FATHOM_SITE_ID', 'DOKFHMYT'),
     ],
 
+    'turnstile' => [
+        'key' => env('TURNSTILE_SITE_KEY'),
+        'secret' => env('TURNSTILE_SECRET_KEY'),
+    ],
+
 ];

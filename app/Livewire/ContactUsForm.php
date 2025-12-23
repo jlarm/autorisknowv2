@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use App\Models\Contact;
+use App\Rules\Turnstile;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -23,6 +24,9 @@ final class ContactUsForm extends Component
     #[Validate(['required', 'string', 'min:3', 'max:500'])]
     public string $message = '';
 
+    #[Validate(['required', new Turnstile])]
+    public string $cfTurnstileResponse = '';
+
     public bool $submitted = false;
 
     public function submit(): void
@@ -38,7 +42,7 @@ final class ContactUsForm extends Component
 
         $this->submitted = true;
 
-        $this->reset(['name', 'email', 'subject', 'message']);
+        $this->reset(['name', 'email', 'subject', 'message', 'cfTurnstileResponse']);
     }
 
     public function render(): View
