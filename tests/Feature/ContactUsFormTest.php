@@ -4,10 +4,21 @@ declare(strict_types=1);
 
 use App\Livewire\ContactUsForm;
 use App\Models\Contact;
+use App\Rules\Turnstile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Http;
 use Livewire\Volt\Volt;
 
 uses(RefreshDatabase::class);
+
+beforeEach(function (): void {
+    // Mock Cloudflare Turnstile API response
+    Http::fake([
+        'challenges.cloudflare.com/turnstile/v0/siteverify' => Http::response([
+            'success' => true,
+        ], 200),
+    ]);
+});
 
 test('contact form submits successfully with valid data', function (): void {
     Volt::test(ContactUsForm::class)
@@ -15,6 +26,7 @@ test('contact form submits successfully with valid data', function (): void {
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', 'This is a test message')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasNoErrors()
         ->assertSet('submitted', true);
@@ -34,8 +46,9 @@ test('contact form validates required fields', function (): void {
         ->set('email', '')
         ->set('subject', '')
         ->set('message', '')
+        ->set('cfTurnstileResponse', '')
         ->call('submit')
-        ->assertHasErrors(['name', 'email', 'subject', 'message']);
+        ->assertHasErrors(['name', 'email', 'subject', 'message', 'cfTurnstileResponse']);
 
     expect(Contact::query()->count())->toBe(0);
 });
@@ -46,6 +59,7 @@ test('contact form validates minimum length', function (): void {
         ->set('email', 'ab')
         ->set('subject', 'ab')
         ->set('message', 'ab')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasErrors(['name', 'email', 'subject', 'message']);
 
@@ -58,6 +72,7 @@ test('contact form validates maximum length for name', function (): void {
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', 'Test message')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasErrors(['name']);
 
@@ -70,6 +85,7 @@ test('contact form validates maximum length for message at 500 characters', func
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', str_repeat('a', 501))
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasErrors(['message']);
 
@@ -84,6 +100,7 @@ test('contact form accepts message with exactly 500 characters', function (): vo
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', $message)
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasNoErrors();
 
@@ -97,11 +114,13 @@ test('contact form resets fields after successful submission', function (): void
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', 'This is a test message')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertSet('name', '')
         ->assertSet('email', '')
         ->assertSet('subject', '')
-        ->assertSet('message', '');
+        ->assertSet('message', '')
+        ->assertSet('cfTurnstileResponse', '');
 });
 
 test('contact form validates string type for all fields', function (): void {
@@ -110,6 +129,7 @@ test('contact form validates string type for all fields', function (): void {
         ->set('email', 'john@example.com')
         ->set('subject', 'Test Subject')
         ->set('message', 'This is a test message')
+        ->set('cfTurnstileResponse', 'test-turnstile-token')
         ->call('submit')
         ->assertHasNoErrors();
 
