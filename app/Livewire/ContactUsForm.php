@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Livewire;
 
 use App\Models\Contact;
-use App\Rules\Turnstile;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 final class ContactUsForm extends Component
 {

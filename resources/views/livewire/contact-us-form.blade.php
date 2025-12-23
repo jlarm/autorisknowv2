@@ -29,7 +29,7 @@
             </div>
             <flux:error name="message" />
         </div>
-        <x-turnstile wire:model="cfTurnstileResponse" />
+        <x-cloudflare-turnstile::turnstile wire:model="cfTurnstileResponse" />
         <flux:error name="cfTurnstileResponse" />
         <button type="submit"
             class="w-full bg-[#036482] hover:bg-[#EC7700] hover:cursor-pointer text-white font-bold py-4 rounded-lg transition-all shadow-lg hover:shadow-[#EC7700]/20 flex items-center justify-center gap-2"><svg

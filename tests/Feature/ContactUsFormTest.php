@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 use App\Livewire\ContactUsForm;
 use App\Models\Contact;
-use App\Rules\Turnstile;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Livewire\Volt\Volt;
+use RyanChandler\LaravelCloudflareTurnstile\Rules\Turnstile;
 
 uses(RefreshDatabase::class);
 
@@ -16,6 +16,7 @@ beforeEach(function (): void {
     Http::fake([
         'challenges.cloudflare.com/turnstile/v0/siteverify' => Http::response([
             'success' => true,
+            'error-codes' => [],
         ], 200),
     ]);
 });
