@@ -1,5 +1,5 @@
 <div x-data>
-    <form x-show="!$wire.submitted" wire:submit="submit" class="space-y-6">
+    <form x-show="!$wire.submitted" wire:submit="submit" onsubmit="fathom.trackEvent('form submit')" class="space-y-6">
         <div class="grid md:grid-cols-2 gap-6">
             <div><label class="block text-sm text-slate-400 font-medium mb-2">Name*</label><input wire:model.blur="name"
                     required
