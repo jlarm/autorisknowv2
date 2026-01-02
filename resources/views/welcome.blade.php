@@ -117,7 +117,7 @@
                         <p class="text-slate-400 mb-8 leading-relaxed">Manage, track, and audit all compliance risks on
                             a single platform. A seamless experience with no compromises.</p><a
                             class="text-[#EC7700] font-semibold flex items-center gap-2 hover:gap-3 transition-all text-sm"
-                            wire:navigate href="{{ route('security') }}" data-discover="true"
+                            wire:navigate href="{{ route('about') }}" data-discover="true"
                             onclick="fathom.trackEvent('explore platform click')">Explore platform <svg
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

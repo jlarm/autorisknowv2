@@ -13,6 +13,18 @@
         <x-page-title-section title="One Partner, One Solution"
             subTitle="Simplify compliance with a unified solution that meets all Safeguard rule requirements through a single trusted partner." />
 
+        <div class="relative max-w-6xl mx-auto z-10 bg-[#020617] border border-white/10 rounded-2xl p-2 shadow-2xl overflow-hidden group">
+            <div class="absolute top-0 left-0 right-0 h-8 bg-[#0f172a] border-b border-white/10 flex items-center px-3 gap-2 z-20"></div>
+            <div class="absolute top-0 left-0 right-0 h-8 bg-[#0f172a] border-b border-white/10 flex items-center px-3 gap-2 z-20">
+                <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+            </div>
+            <div class="mt-8">
+                <img class="rounded-lg w-full h-auto" src="{{ asset('dashboard.webp') }}" alt="Dashboard">
+            </div>
+        </div>
+
         <section class="relative glass-panel rounded-2xl p-10 md:p-16 border-white/10 bg-[#0f172a]/40 overflow-hidden">
             <div
                 class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#036482]/10 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2">
